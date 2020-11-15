@@ -1,0 +1,16 @@
+<template>
+    <div>
+        <h2>Bienvenue sur notre resaux social</h2>
+        <navOffline/>
+        <router-view/>
+    </div>
+</template>
+
+<script>
+import navOffline from '../components/nav/navOffline'
+export default {
+    components: {
+        navOffline
+    }
+}
+</script>
