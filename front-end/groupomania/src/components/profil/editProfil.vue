@@ -22,7 +22,7 @@
 </template>
 
 <script>
-const req = require('../../requette')
+const req = require('../../axios/requette')
 const verif = require('./verifPasseword')
 export default {
     props: ['User'],
@@ -63,7 +63,7 @@ export default {
             console.log(update)
 
             //envoie de la requette final
-            const reponse = await req.putProfil(user.token, user.userId, update)
+            const reponse = await req.putProfil(user.userId, update)
             if(!reponse.ok) return this.message = reponse.body
             alert(reponse.body)
             this.$router.push({name: 'myPage'}) 

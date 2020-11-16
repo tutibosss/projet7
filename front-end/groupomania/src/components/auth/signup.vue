@@ -18,7 +18,7 @@
 
 <script>
 const verif = require('./verifForm')
-const req = require('../../requette')
+const req = require('../../axios/requette')
 
 export default {
   data: () => {return {
@@ -50,8 +50,7 @@ export default {
 
       if(!login.ok) return this.error = rep.body + " une erreur c'est produit lors de la conection"
 
-      const loginJson = JSON.stringify(login.body)
-      localStorage.setItem('user', loginJson)
+      localStorage.setItem('user', JSON.stringify(login.body))
       this.$router.push({name:'index', params:{id: login.body.userName}})
     }
   }

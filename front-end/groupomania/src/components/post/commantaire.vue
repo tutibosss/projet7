@@ -32,7 +32,8 @@
 </template>
 
 <script>
-const req = require('../../requette')
+const Req = require('../../axios/requette')
+
 export default {
     props:{
         commentaire: {type: Array},
@@ -49,7 +50,7 @@ export default {
     },
     methods:{
         async push () {
-            console.log(this.admin)
+           
             const user = JSON.parse(localStorage.getItem('user'))
             const comment = {
                 userId: user.userId,
@@ -58,7 +59,7 @@ export default {
             }
             const postId = this.$route.params.postId
             
-            const reponse = await req.pushComment(user.token, postId, comment)
+            const reponse = await Req.pushComment(postId, comment)
             if(reponse.ok != true) alert('tricheur') //fonction pour renvoyer au loin
             window.location.reload()
         },
@@ -67,9 +68,8 @@ export default {
                 index: index,
                 userId: this.userId
             }
-            console.log(this.$route.params.postId, update)
-            const user = JSON.parse(localStorage.getItem('user'))
-            const reponse = await req.deleteCommentaire(user.token, this.$route.params.postId, update)
+            
+            const reponse = await Req.deleteCommentaire(this.$route.params.postId, update)
             if(reponse.ok != true) alert('tricheur') //fonction pour renvoyer au loin
             alert(reponse.body)
             window.location.reload()
@@ -88,10 +88,10 @@ export default {
                 index: index,
                 newCommentaire: this.modifChamps 
             }
-            const user = JSON.parse(localStorage.getItem('user'))
+    
             const postId = this.$route.params.postId
 
-            const reponse = await req.modifCommentaire(user.token, postId, update)
+            const reponse = await Req.modifCommentaire( postId, update)
             if(reponse.ok != true) alert('tricheur') //fonction pour renvoyer au loin
             alert(reponse.body)
             window.location.reload()

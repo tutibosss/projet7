@@ -13,7 +13,8 @@
 <script>
 import profil from '../components/profil/profil'
 import editProfil from '../components/profil/editProfil'
-const req = require('../requette')
+
+const req = require('../axios/requette')
 export default {
     components: {
         profil,
@@ -35,9 +36,9 @@ export default {
         },
         async deleteUser () {
             const user = JSON.parse(localStorage.getItem('user'))
-            const reponse = await req.deleteUser(user.token, user.userId)
+            const reponse = await req.deleteUser(user.userId)
             if(reponse.ok != true) return alert('tricheur') //fonction pour renvoyer au loin
-            const rep = await req.deleteUserPostAll(user.token, user.userId)
+            const rep = await req.deleteUserPostAll(user.userId)
             if(rep.ok != true) return alert('tricheur') //fonction pour renvoyer au loin
             this.$router.push({name: 'login'})
         }

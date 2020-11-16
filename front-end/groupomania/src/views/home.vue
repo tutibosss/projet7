@@ -7,13 +7,10 @@
 
 <script>
 import listPost from '../components/post/listPost'
-const req = require('../requette'
-)
+const req = require('../axios/requette')
 export default {
     async beforeCreate () {
-        const user = JSON.parse(localStorage.getItem('user'))
-        const reponse = await req.getAllPost(user.token)
-        console.log(reponse)
+        const reponse = await req.getAllPost()
         if(reponse.ok != true) alert('tricheur') //fonction pour renvoyer au loin
         this.listItem = reponse.body
     },

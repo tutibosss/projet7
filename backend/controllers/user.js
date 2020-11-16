@@ -30,6 +30,7 @@ exports.signup = (req, res) => {
 exports.login = async (req, res) => {
 
     // const email = crypt(req.body.email)
+    console.log(req.body)
     const email = req.body.email
 
     const sql = "SELECT * FROM user WHERE email = ?";

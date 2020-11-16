@@ -17,7 +17,7 @@
 </template>
 
 <script>
-const req = require('../../requette')
+const req = require('../../axios/requette')
 export default {
     props: ['post'],
     mounted () {
@@ -39,11 +39,8 @@ export default {
                 post : this.contenuPost
             }
             const idPost = this.$route.params.postId
-            console.log(update, idPost)
-            
-            const user = JSON.parse(localStorage.getItem('user'))
 
-            const reponse = await req.modifPost(user.token, idPost, update)
+            const reponse = await req.modifPost(idPost, update)
             if(reponse.ok != true) alert('tricheur') //fonction pour renvoyer au loin
             alert(reponse.body)
             window.location.reload()

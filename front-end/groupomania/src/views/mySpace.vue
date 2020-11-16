@@ -12,12 +12,12 @@
 <script>
 import listPost from '../components/post/listPost'
 import profil from '../components/profil/profil'
-const req = require('../requette')
+const req = require('../axios/requette')
 
 export default {
     async beforeCreate () {
         const user = JSON.parse(localStorage.getItem('user'))
-        const reponse = await req.getAllPostId(user.token, user.userId)
+        const reponse = await req.getAllPostId(user.userId)
         if(reponse.ok != true) return alert('tricheur') //fonction pour renvoyer au loin
         this.listItem = reponse.body
         this.userDroit = true

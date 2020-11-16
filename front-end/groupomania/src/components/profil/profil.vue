@@ -6,13 +6,12 @@
 </template>
 
 <script>
-const req = require('../../requette')
+const req = require('../../axios/requette')
 export default {
     async beforeCreate () {
         const user = JSON.parse(localStorage.getItem('user'))
 
-        const reponse = await req.getUser(user.token, user.userId)
-        console.log(reponse)
+        const reponse = await req.getUser(user.userId)
 
         if(reponse.ok != true) return alert('tricheur') //fonction pour renvoyer au loin
 

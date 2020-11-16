@@ -14,7 +14,7 @@
 </template>
 
 <script>
-const req = require('../../requette')
+const req = require('../../axios/requette')
 const verif = require('./verifForm')
 
 export default {
@@ -35,7 +35,6 @@ export default {
       this.error = ''
 
       const rep = await req.login(user)
-      console.log(rep)
 
       if(!rep.ok) return this.error = rep.body
 

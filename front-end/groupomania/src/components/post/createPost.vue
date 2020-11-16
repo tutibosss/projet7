@@ -11,7 +11,7 @@
 </template>
 
 <script>
-const req = require('../../requette')
+const req = require('../../axios/requette')
 
 export default {
     data: () => {return{
@@ -28,8 +28,9 @@ export default {
                 post: this.post
             }
 
-            const reponse = await req.newPost(user.token, post)
+            const reponse = await req.newPost(post)
             if(reponse.ok != true) return alert('tricheur') //fonction pour renvoyer au loin
+            alert(reponse.body)
             this.$router.push({name:'index', params:{id: user.userName}})
         }
     }

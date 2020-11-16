@@ -12,7 +12,7 @@
 
 <script>
 
-const req = require('../../requette')
+const Req = require('../../axios/requette')
 const reqAdm = require('../../requetteAdmin')
 
 import commentaire from './commantaire'
@@ -37,13 +37,13 @@ export default {
          const user = JSON.parse(localStorage.getItem('user'))
          const postId = this.$route.params.postId 
 
-         const reponse = await req.getPostId(user.token, postId)
+         const reponse = await Req.getPostId(postId)
          if(reponse.ok != true) alert('tricheur') //fonction pour renvoyer au loin
          this.post = reponse.body
      
         if(user.admin) this.admin = true
         if(user.userId === this.post.userId) this.userDroit = true
-        console.log(user.userId === this.post.userId)
+
         this.userId = user.userId
     },
     methods: {
@@ -58,8 +58,7 @@ export default {
             
             }else if (this.userDroit && !this.admin){
                 
-                const user = JSON.parse(localStorage.getItem('user'))
-                const reponse = await req.deletePost(user.token, postId)
+                const reponse = await Req.deletePost(postId)
                 if(reponse.ok != true) return alert('tricheur') //fonction pour renvoyer au loin
 
             }else {return alert ('commende impossible')}
@@ -71,7 +70,6 @@ export default {
             this.modifier = true
         },
         annuler(payload){
-            console.log('camache')
             this.modifier = payload.rep
         }
     }
