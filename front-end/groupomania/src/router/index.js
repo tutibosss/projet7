@@ -57,6 +57,24 @@ const routes = [
         name: 'myProfil',
         component: () => import('../views/myProfil.vue')
       },
+      {
+        path: 'admin',
+        name: 'admin',
+        component: () => import('../views/admin/admin.vue'),
+        redirect: {name: 'listAdmin'},
+        children: [
+          {
+            path: 'list-Admin',
+            name: 'listAdmin',
+            component: () => import('../views/admin/listAdmin.vue')
+          },
+          {
+            path: 'list-User',
+            name: 'listUser',
+            component: () => import('../views/admin/listUser.vue')
+          },
+        ]
+      },
     ]
   }
 ]
