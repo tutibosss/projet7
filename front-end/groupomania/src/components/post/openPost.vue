@@ -1,19 +1,22 @@
 <template>
     <article>
         <post v-bind="{post: post}" v-if="!modifier"/>
+        
         <modifPost v-bind:post="post" @annule="annuler" v-else />
-        <div v-if="admin === true || userDroit === true && !modifier">
+
+        <div v-if="(userDroit === true || admin === true) && !modifier">
             <button @click="modif">modifier</button>
             <button @click="deletePost">suprimer le post</button>
         </div>
+
         <commentaire v-bind="{commentaire: post.commentaire, admin: admin, userId: userId}"/>
+        
     </article>
 </template>
 
 <script>
 
 const Req = require('../../axios/requette')
-const reqAdm = require('../../requetteAdmin')
 
 import commentaire from './commantaire'
 import post from './post'
@@ -48,11 +51,10 @@ export default {
     },
     methods: {
         async deletePost () {
-            const user = JSON.parse(localStorage.getItem('user'))
             const postId = this.$route.params.postId 
 
             if(this.admin){
-            const reponse = await reqAdm.deletePost(user.token,postId)
+            const reponse = await Req.adminDeletePost(postId)
             
             if(reponse.ok != true) return alert('tricheur') //fonction pour renvoyer au loin
             
@@ -61,7 +63,7 @@ export default {
                 const reponse = await Req.deletePost(postId)
                 if(reponse.ok != true) return alert('tricheur') //fonction pour renvoyer au loin
 
-            }else {return alert ('commende impossible')}
+            }else {return alert ('commande impossible')}
 
             alert('lobjet et bien suprimer')
             this.$router.push({name: 'home'})

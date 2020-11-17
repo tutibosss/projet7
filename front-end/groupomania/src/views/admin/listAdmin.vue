@@ -7,7 +7,7 @@
 
 <script>
 import listAdmin from '../../components/admin/list'
-const req = require('../../requetteAdmin')
+const req = require('../../axios/requette')
 export default {
     components:  {
         listAdmin
@@ -16,10 +16,8 @@ export default {
         list : []
     }},
     async beforeCreate () {
-        const user = JSON.parse(localStorage.getItem('user'))
-        const reponse = await req.getUser(user.token, true)
+        const reponse = await req.adminGetUser(true)
         if(!reponse.ok) alert('ne erreur cest produite')
-        console.log(reponse)
         this.list = reponse.body
     }
 }

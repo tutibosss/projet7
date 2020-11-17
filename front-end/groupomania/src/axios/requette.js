@@ -29,3 +29,17 @@ exports.deleteCommentaire = (postId, body) => {return axios('DELETE', 'commentai
 exports.modifCommentaire = (postId, body) => {return axios('PUT', 'commentaire/post/'+ postId, body)}
 
 exports.modifPost = (postId, body) => {return axios('PUT', 'post/'+ postId, body)}
+
+//requette admin
+
+exports.adminGetUser = (value) => {return axios('GET','admin/user/'+ value)}
+
+exports.putUser = (body) => {return axios('PUT', 'admin/user/status', body)}
+
+exports.adminDeletePost =  (postId) => {return axios('DELETE', 'admin/post/'+postId)}
+
+exports.adminModifPost = (idPost, body) => {return axios('PUT', 'admin/post/'+idPost, body)}
+
+exports.adminDeleteCommentaire = (postId, body) => {return axios('DELETE', 'admin/commentaire/post/'+ postId, body)}
+
+exports.adminModifCommentaire = (postId, body) => {return axios('PUT', 'admin/commentaire/post/'+ postId, body)}

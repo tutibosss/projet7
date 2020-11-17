@@ -1,6 +1,4 @@
-const db = require('../middelware/db')
-const fs = require('fs');
-const { json } = require('body-parser');
+const db = require('../middelware/db/connectDataBase')
 
 exports.newPost = (req, res) => {
     let comment = []
@@ -43,16 +41,19 @@ exports.newCommentaire = (req, res) =>{
 exports.modifCommentaire = (req, res) => {
     console.log(req.body)
     const postId = req.params.id
+
     const sql = 'SELECT commentaire FROM post WHERE id= ?'
     db.query(sql, postId, (error, result) => {
         if(error) return res.status(400).json('une erreur c est produite');
+
         let commentaire = JSON.parse(result[0].commentaire)
+        commentaire[req.body.index].commentaire =  req.body.newCommentaire
         console.log(commentaire)
-        commentaire[req.body.index].commentaire = req.body.newCommentaire
-        console.log(commentaire)
+        
         const update = JSON.stringify(commentaire)
         const SQL = "UPDATE post SET commentaire = '" + update + "' WHERE id = ?"
         db.query(SQL, postId, (error ,result) => {
+            console.log(error)
             if(error) return res.status(400).json('une erreur c est produite');
             res.status(200).json('modification effectuer')
         })
@@ -61,17 +62,18 @@ exports.modifCommentaire = (req, res) => {
 
 
 exports.modifPost = (req, res) => {
-    console.log(req.body)
-    console.log(req.params.id)
-    const sql = "UPDATE post SET titrePost = '"+req.body.titrePost+"', post = '"+req.body.post+"' WHERE id = ?"
+    const titre = JSON.stringify(req.body.titrePost)
+    const post = JSON.stringify(req.body.post)
+    const sql = "UPDATE post SET titrePost = "+titre+", post = "+post+" WHERE id = ?"
     db.query(sql, req.params.id, (error, result) => {
+        console.log(error)
         if(error) return res.status(400).json('une erreur c est produit')
         res.status(200).json('votre mise a jour a bien etait effectuer')
     })
 }
 
 exports.GetAllPost = (req, res) => {
-    const sql = 'SELECT * FROM post'
+    const sql = 'SELECT * FROM post ORDER BY id DESC'
     db.query(sql, (error,result) =>{
         if(error) throw error;
         // const post = result.reverse()
@@ -117,7 +119,6 @@ exports.deleteCommentaire = async (req, res) => {
         let commentaire = JSON.parse(result[0].commentaire)
         console.log(commentaire)
 
-        
         const modifTableau = () => {
             console.log(req.body.index)
             commentaire.splice(req.body.index , 1)

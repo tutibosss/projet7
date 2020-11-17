@@ -1,4 +1,4 @@
-const db = require('../middelware/db')
+const db = require('../middelware/db/connectDataBase')
 const bcrypte = require('bcrypt')
 
 exports.getUser = (req, res) => {
@@ -15,9 +15,8 @@ exports.getUser = (req, res) => {
 }
 
 exports.getPost = (req, res) => {
-    console.log('cbn')
     const userId = req.params.id
-    const sql = 'SELECT * FROM post WHERE userId = ?'
+    const sql = 'SELECT * FROM post WHERE userId = ? ORDER BY id DESC'
     db.query(sql, userId, (error, result) => {
         if(error) throw error;
         res.status(200).json(result)

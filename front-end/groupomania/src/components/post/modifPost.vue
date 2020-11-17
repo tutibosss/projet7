@@ -40,9 +40,17 @@ export default {
             }
             const idPost = this.$route.params.postId
 
-            const reponse = await req.modifPost(idPost, update)
-            if(reponse.ok != true) alert('tricheur') //fonction pour renvoyer au loin
-            alert(reponse.body)
+           const user = JSON.parse(localStorage.getItem('user'))
+           if(user.admin){
+               console.log('admin')
+               const reponse = await req.adminModifPost(idPost, update)
+                if(reponse.ok != true) return alert('tricheur') //fonction pour renvoyer au loin
+           }else{
+               console.log('pasadmin')
+                const reponse = await req.modifPost(idPost, update)
+                if(reponse.ok != true) return alert('tricheur') //fonction pour renvoyer au loin
+           }
+
             window.location.reload()
         }
     }

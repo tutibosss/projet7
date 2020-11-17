@@ -1,9 +1,10 @@
 require('dotenv').config({path: './middelware/.env'})
+require('./middelware/db/CreateDataBase')
+
 const express = require('express');
 const bodyParse = require('body-parser');
 const path = require('path');
 const helmet = require('helmet');
-const db = require('./middelware/db')
 
 const userRoute = require('./route/user');
 const stuffRoute = require('./route/stuff');
@@ -11,11 +12,6 @@ const profilRoute = require('./route/profil');
 const adminRoute = require('./route/admin')
 
 const app = express();
-
-db.connect(function(err) {
-  if (err) throw err;
-  console.log("Connected!");
-});
 
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');

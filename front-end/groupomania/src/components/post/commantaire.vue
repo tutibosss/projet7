@@ -6,7 +6,7 @@
                 <article v-if="modifIndex != index">
                     <h4>{{item.userName}}</h4>
                     <p>{{item.commentaire}}</p>
-                    <div v-if="userId === item.userId || admin === true && modifIndex === null">
+                    <div v-if="(userId === item.userId || admin === true) && modifIndex === null">
                         <button @click="modif(index, item)">modif</button>
                         <button @click="deleteCommentaire(index)">X</button>
                     </div>       
@@ -65,13 +65,19 @@ export default {
         },
         async deleteCommentaire (index) {
             const update = {
-                index: index,
-                userId: this.userId
+                index: index
             }
             
-            const reponse = await Req.deleteCommentaire(this.$route.params.postId, update)
-            if(reponse.ok != true) alert('tricheur') //fonction pour renvoyer au loin
-            alert(reponse.body)
+            const user = JSON.parse(localStorage.getItem('user'))
+            if(user.admin){
+                const reponse = await Req.adminDeleteCommentaire(this.$route.params.postId, update)
+                if(reponse.ok != true) return alert('tricheur') //fonction pour renvoyer au loin
+                alert(reponse.body)
+            }else{
+                const reponse = await Req.deleteCommentaire(this.$route.params.postId, update)
+                if(reponse.ok != true) return alert('tricheur') //fonction pour renvoyer au loin
+                alert(reponse.body)
+            }
             window.location.reload()
         },
         modif(index, champ) {
@@ -91,9 +97,16 @@ export default {
     
             const postId = this.$route.params.postId
 
-            const reponse = await Req.modifCommentaire( postId, update)
-            if(reponse.ok != true) alert('tricheur') //fonction pour renvoyer au loin
-            alert(reponse.body)
+            const user = JSON.parse(localStorage.getItem('user'))
+            if(user.admin){
+                const reponse = await Req.adminModifCommentaire( postId, update)
+                if(reponse.ok != true) return alert('tricheur') //fonction pour renvoyer au loin
+                alert(reponse.body)  
+            }else{
+                const reponse = await Req.modifCommentaire( postId, update)
+                if(reponse.ok != true) return alert('tricheur') //fonction pour renvoyer au loin
+                alert(reponse.body)               
+            }
             window.location.reload()
         }
     }

@@ -5,14 +5,14 @@
             <div v-for="item in list" :key="item.id">
                 <h3>{{item.userName}}</h3>
                 <p>{{item.email}}</p>
-                <button v-if="list.length > 1" @click="modifAdmin(item.admin, item.id)">{{textButton}}</button>
+                <button v-if="list.length > 1 || !type" @click="modifAdmin(item.admin, item.id)">{{textButton}}</button>
             </div>
         </div>
     </div>
 </template>
 
 <script>
-const req = require('../../requetteAdmin')
+const req = require('../../axios/requette')
 export default {
     props: {
         list : {type: Array},
@@ -33,8 +33,8 @@ export default {
                 userId : id,
                 status : Status
             }
-            const user = JSON.parse(localStorage.getItem('user'))
-            const reponse = await req.putUser(user.token, update)
+            
+            const reponse = await req.putUser(update)
             if(!reponse.ok) alert('ne erreur cest produite')
             alert("le status de l'utilisateur a bien etait modifier")
             this.$router.push({name: 'listAdmin'})

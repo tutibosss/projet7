@@ -1,4 +1,4 @@
-const db = require('../middelware/db')
+const db = require('../middelware/db/connectDataBase')
 
 exports.getUser = (req, res) => {
     const sql = 'SELECT userName, email, id, admin FROM user WHERE admin = ?'

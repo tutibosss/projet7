@@ -1,4 +1,4 @@
-const db = require('../middelware/db')
+const db = require('../middelware/db/connectDataBase')
 const bcrypte = require('bcrypt');
 const token = require('jsonwebtoken');
 const crypt = require('../middelware/masqueEmail')
