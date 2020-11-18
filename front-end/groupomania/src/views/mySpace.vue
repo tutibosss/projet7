@@ -33,7 +33,7 @@ export default {
     methods: {
         async deleteMyPost () {
             const user = JSON.parse(localStorage.getItem('user'))
-            const rep = await req.deleteUserPostAll(user.token, user.userId)
+            const rep = await req.deleteUserPostAll(user.userId)
             if(rep.ok != true) return alert('tricheur') //fonction pour renvoyer au loin
             window.location.reload()
         }

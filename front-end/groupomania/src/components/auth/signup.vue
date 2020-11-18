@@ -1,6 +1,6 @@
 <template>
     <div>
-      <p>{{error}}</p>  
+      <p class="error">{{error}}</p>  
       <form>
           <label for="userName"> user name </label>
           <input type="text" id="userName" required v-model="userName">

@@ -35,6 +35,10 @@ form {
     flex-direction: column;
 }
 
+.marginAuto{
+    margin: auto;
+}
+
 .displayFlexCenter{
     display: flex;
     flex-direction: column;
@@ -48,12 +52,13 @@ form {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    width: 99%;
+    width: 100%;
 }
 
 .routerview{
     display: flex;
     flex-direction: column;
+    width: 100%;
     height: 100%;
 }
 
@@ -83,8 +88,14 @@ form {
     width: 100%;
 }
 
+.error{
+    color: red;
+    font-size: 1.2em;
+}
+
 .formAuth div{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 80%;
@@ -388,6 +399,7 @@ form {
     flex-direction: column;
     text-align: center;
     width: 20%;
+    margin: 15px;
     padding: 30px;
     border-radius: 20px;
     border: 2px solid black;

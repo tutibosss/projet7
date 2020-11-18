@@ -1,6 +1,6 @@
 <template>
   <div>
-      <p>{{error}}</p>
+      <p class="error">{{error}}</p>
       <form>
           <label for="email">email</label>
           <input type="email" v-model="email" id="email">

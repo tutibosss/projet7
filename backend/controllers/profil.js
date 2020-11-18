@@ -5,7 +5,7 @@ exports.getUser = (req, res) => {
     const userId = req.params.id
     const sql = 'SELECT * FROM user WHERE id = ?'
     db.query(sql, userId, (error, result) => {
-        if(error) throw error;
+        if(error) return res.status(400).json('une erreur ses produit veuille re essaye plus tard')
         const rep = {
             userName : result[0].userName,
             email: result[0].email
@@ -18,18 +18,16 @@ exports.getPost = (req, res) => {
     const userId = req.params.id
     const sql = 'SELECT * FROM post WHERE userId = ? ORDER BY id DESC'
     db.query(sql, userId, (error, result) => {
-        if(error) throw error;
+        if(error) return res.status(400).json('une erreur ses produit veuille re essaye plus tard')
         res.status(200).json(result)
     })
 }
 
 exports.deleteUser = (req, res) => {
-    console.log('ctoutbon')
     const user = req.params.id
-    console.log(user)
     const sql = 'DELETE FROM user WHERE id = ?'
     db.query(sql, user, (error, result) => {
-        if(error) throw error;
+        if(error) return res.status(400).json('une erreur ses produit veuille re essaye plus tard')
         res.status(200).json({message: 'utilisarteur suprimer'}) 
     })
 }
@@ -37,14 +35,8 @@ exports.deleteUser = (req, res) => {
 exports.modifProfil = async (req, res) => {
     
     const user = req.body.userId
-  
-    const queryUpdate = (sql) => {
-        db.query(sql, user, (error, result) => {
-            if(error) return res.status(400).json('une erreur ses produit veuille re essaye plus tard')
-            return res.status(200).json('la modification a ete effectuer')
 
-        })
-    }
+    delete req.body.userId
     
     const sql = "SELECT * FROM user WHERE email = ?";
 
@@ -54,27 +46,37 @@ exports.modifProfil = async (req, res) => {
         
         if(result.length != 0 && result[0].id != user) return res.status(400).json('votre adress mail et utilise sur un autre compte')
 
-        let sqlUpdate = 'userName = '+ "'"+req.body.userName+"'" + ', email = '+ "'"+req.body.email+"'"
-
         if(req.body.holdPassword != undefined){
 
             //si il y a un mot de passe
             const sql = 'SELECT password FROM user WHERE id = ?'
             db.query(sql, user, async (error, result) => {
                 if(error) return res.status(400).json('une erreur seveur veuille essaye plus tard')
+
                 const rep = await bcrypte.compare(req.body.holdPassword, result[0].password)
                 if(!rep) return res.status(400).json('votre ancient mot de passe et incorecte')
 
                 const password = await bcrypte.hash(req.body.newPassword, 10)
-                sqlUpdate = sqlUpdate + ', password = ' +"'"+ password+"'"
+                
+                delete req.body.holdPassword
+                delete req.body.newPassword
+                req.body.password = password
+                console.log(req.body)
     
-                const sql = 'UPDATE user SET '+sqlUpdate+ ' WHERE id = ?'
-                queryUpdate(sql)
+                const sql = 'UPDATE user SET ? WHERE id = ?'
+                
+                db.query(sql,[req.body, user], (error, result) => {
+                    if(error) return res.status(400).json("une erreur c'est produite")
+                    res.status(200).json('la modification a etait effectuer et le mot de passe et change')
+                })
             })
         }else{
             //si il n'y a pas le mot de passe
-            const sql = 'UPDATE user SET '+sqlUpdate+ ' WHERE id = ?'
-            queryUpdate(sql)
+            const sql = 'UPDATE user SET ? WHERE id = ?'
+            db.query(sql,[req.body, user], (error, result) => {
+                if(error) return res.status(400).json("une erreur c'est produite")
+                res.status(200).json('la modification a etait effectuer et le mot de passe et change')
+            })
         }
     })
 }

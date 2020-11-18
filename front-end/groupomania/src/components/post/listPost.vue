@@ -9,7 +9,7 @@
             <p>{{item.post}}</p>
         </router-link>
     </div>
-    <p v-else>aucun post pour l'instant cree en un ;)</p>
+    <p v-else class="marginAuto">aucun post pour l'instant cree en un ;)</p>
 </template>
 
 <script>

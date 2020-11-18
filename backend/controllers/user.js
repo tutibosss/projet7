@@ -7,6 +7,7 @@ exports.signup = (req, res) => {
     // const email = crypt(req.body.email)
     const email = req.body.email
     const sql = "SELECT email FROM user WHERE email = ?";
+    
     db.query(sql, email, async (error,result) => {
         if(error) return res.status(400).json('erreur interne veuille retente plus tard');
         if(result.length > 0){
