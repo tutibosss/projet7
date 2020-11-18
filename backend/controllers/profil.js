@@ -1,5 +1,6 @@
 const db = require('../middelware/db/connectDataBase')
 const bcrypte = require('bcrypt')
+const emailCrypt = require('../middelware/masqueEmail')
 
 exports.getUser = (req, res) => {
     const userId = req.params.id
@@ -8,7 +9,7 @@ exports.getUser = (req, res) => {
         if(error) return res.status(400).json('une erreur ses produit veuille re essaye plus tard')
         const rep = {
             userName : result[0].userName,
-            email: result[0].email
+            email: emailCrypt.decrypte(result[0].email)
         }
         res.status(200).json(rep)
     })
@@ -37,6 +38,7 @@ exports.modifProfil = async (req, res) => {
     const user = req.body.userId
 
     delete req.body.userId
+    req.body.email = emailCrypt.crypte(req.body.email)
     
     const sql = "SELECT * FROM user WHERE email = ?";
 
@@ -46,7 +48,7 @@ exports.modifProfil = async (req, res) => {
         
         if(result.length != 0 && result[0].id != user) return res.status(400).json('votre adress mail et utilise sur un autre compte')
 
-        if(req.body.holdPassword != undefined){
+        if(req.body.holdPassword){
 
             //si il y a un mot de passe
             const sql = 'SELECT password FROM user WHERE id = ?'
@@ -75,7 +77,7 @@ exports.modifProfil = async (req, res) => {
             const sql = 'UPDATE user SET ? WHERE id = ?'
             db.query(sql,[req.body, user], (error, result) => {
                 if(error) return res.status(400).json("une erreur c'est produite")
-                res.status(200).json('la modification a etait effectuer et le mot de passe et change')
+                res.status(200).json('la modification a etait effectuer')
             })
         }
     })

@@ -1,11 +1,10 @@
 const db = require('../middelware/db/connectDataBase')
 const bcrypte = require('bcrypt');
 const token = require('jsonwebtoken');
-const crypt = require('../middelware/masqueEmail')
+const emailCryp = require('../middelware/masqueEmail')
 
 exports.signup = (req, res) => {
-    // const email = crypt(req.body.email)
-    const email = req.body.email
+    const email = emailCryp.crypte(req.body.email)
     const sql = "SELECT email FROM user WHERE email = ?";
     
     db.query(sql, email, async (error,result) => {
@@ -30,9 +29,7 @@ exports.signup = (req, res) => {
 
 exports.login = async (req, res) => {
 
-    // const email = crypt(req.body.email)
-    console.log(req.body)
-    const email = req.body.email
+    const email = emailCryp.crypte(req.body.email)
 
     const sql = "SELECT * FROM user WHERE email = ?";
     db.query(sql, email, (error,result)=>{
