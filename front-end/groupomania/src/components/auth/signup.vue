@@ -1,5 +1,6 @@
 <template>
     <div>
+      <p>{{error}}</p>  
       <form>
           <label for="userName"> user name </label>
           <input type="text" id="userName" required v-model="userName">
@@ -10,9 +11,8 @@
           <label for="password"> Mot de passe </label>
           <input type="password" id="passeword" required v-model="password">
 
-          <input type="submit" @click.prevent="signup">
-      </form>
-      <p>{{error}}</p>     
+          <input type="submit" @click.prevent="signup" class="buttonAuth">
+      </form>   
     </div>
 </template>
 

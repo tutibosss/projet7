@@ -1,6 +1,7 @@
 <template>
 <div>
-    <form>
+    <h3>modifier mon profil</h3>
+    <form class="profilForm">
         <label for="firstName"> prenom </label>
         <input type="text" id="firstName" v-model="userName">
 
@@ -14,10 +15,14 @@
         <input type="password" id="newPasseword" v-if="checkbox" v-model="newPassword">
     </form>
     <p>{{message}}</p>
-    <label for="mdp">modifier mot de passe</label>
-    <input type="checkbox" title="modifier le mot de passe" id="mdp" v-model="checkbox">
 
-    <button @click="putProfil" > modifier mon profil </button>
+    <div class="profilForm_checbox">
+        <input type="checkbox" title="modifier le mot de passe" id="mdp" v-model="checkbox">
+        <label for="mdp">modifier mot de passe</label>
+    </div>
+    
+
+    <button @click="putProfil" class="profilForm_input"> modifier mon profil </button>
 </div>
 </template>
 

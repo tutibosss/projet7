@@ -1,18 +1,20 @@
 <template>
     <div>
-        <div>
+        <div class="Post_titre">
             <p>publier par {{post.userName}}</p>
             <p>le  {{post.date}}</p>
         </div>
-        <form>
+        <form class="modifPost_form">
             <label for="titre">titre du post</label>
             <input type="text " id="titre" v-model="titrePost">
 
             <label for="contenue"> contenue du post</label>
-            <input type="text" id="contenue" v-model="contenuPost">
+            <input type="text" id="contenue" v-model="contenuPost" class="createPost_form_inputPost">
         </form>
-        <button @click="modifCommentaire"> valide la modification </button>
-        <button @click="annule"> annule </button>        
+        <div class="modifPost_button">
+            <button @click="annule"> annule </button>  
+            <button @click="modifCommentaire"> valide la modification </button> 
+        </div>     
     </div>
 </template>
 

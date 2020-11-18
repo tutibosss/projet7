@@ -1,11 +1,11 @@
 <template>
-    <div>
+    <div class="listAdmin">
         <h2>bienvenue ans la gestion des admin</h2>
-        <div>
+        <div class="navAdmin">
             <router-link :to="{name: 'listAdmin'}"> liste de admin </router-link>
             <router-link :to="{name: 'listUser'}"> liste de user </router-link>
         </div>
-        <router-view/>
+        <router-view class="listAdmin"/>
     </div>
 </template>
 

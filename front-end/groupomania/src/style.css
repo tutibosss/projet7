@@ -1,0 +1,395 @@
+body {
+    display: flex;
+    margin: 0px;
+    min-height: 100vh;
+    width: 100%;
+}
+
+header{
+    text-align: center;
+}
+
+h2 {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+nav {
+    font-size: 1.5em;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+form {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+}
+
+.displayFlexCenter{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.divPrincipal{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    width: 99%;
+}
+
+.routerview{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.auth {
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+}
+
+
+.formAuth{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+    box-shadow: 10px 5px 5px rgba(145, 144, 144, 0.514);
+    width: 100%;
+    height: auto;
+    background-color: rgba(128, 128, 128, 0.623);
+    padding: 30px;
+}
+
+.formAuth nav{
+    width: 100%;
+}
+
+.formAuth div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+}
+
+.buttonAuth{
+    width: 50%;
+}
+
+.formAuth input {
+    text-align: center;
+    height: 30px;
+    width: 100%;
+    border-radius: 30px;
+    box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.753);
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.formAuth label{
+    text-align: center;
+    font-size: 1.2em;
+}
+
+.formAuth h3 {
+    font-size: 2em;
+}
+
+.home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+
+.listPost{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.Post{
+    text-decoration: none;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border-radius: 20px;
+    border: 2px solid black;
+    box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.753);
+    margin-top: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.Post_titre {
+    display: flex;
+    flex-direction: column;
+    padding-left: 30px;
+    text-align: left;
+    background-color: rgba(222, 184, 135, 0.596);
+    border-radius: 20px;
+}
+
+.Post div p {
+    margin: 5px;
+}
+
+.profilView {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    border: 1px solid black;
+}
+
+.PostView{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.commentaire{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    border-radius: 20px;
+    border: 2px solid black;
+    box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.753);
+    margin-top: 20px;
+}
+
+.commentaireBox{
+    display: flex;  
+    border-radius: 20px;
+    border: 2px solid black;
+    margin: 10px; 
+}
+
+.commentaireBox div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.commentaireText{
+    width: 90%;
+}
+
+.listCommentaire {
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.commentaire button {
+    width: auto;
+}
+
+.ButtonCommentaire{
+    display: flex;
+    padding: 10px;
+    justify-content: space-around;
+    position: sticky;
+    bottom: 0;
+    background-color: rgb(222, 184, 135);
+    border-radius: 10px;
+}
+
+.ButtonCommentaire input{
+    width: 90%;
+}
+
+.ButtonPost{
+    display: flex;
+    justify-content: space-around;
+    border-radius: 20px;
+    border: 2px solid black;
+    box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.753);
+    padding: 15px;
+}
+
+.profil{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.profilBox{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    justify-content: center;
+    border-radius: 20px;
+    width: 50%;
+    min-height: 50%;
+    height: auto;
+    border: 2px solid black;
+    box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.753);
+    padding: 15px;
+}
+
+.profilBox_view{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80%;
+}
+
+.profilButton {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.profilSoloButton{
+    width: 20%;
+    margin: auto;
+}
+
+.profilForm{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 70%;
+    height: 100%;
+}
+
+.profilForm_checbox{
+    display: flex;
+    margin: 10px;
+}
+
+.profilForm_checbox input{
+    margin-right: 10px;
+}
+
+.profilForm_input{
+    margin: 10px;
+}
+
+.createPost{
+    flex-direction: column;
+    display: flex;
+    width: 50%;
+    min-height: 50%;
+    height: auto;
+    margin: auto;
+    justify-content: center;
+    padding: 30px;
+    border-radius: 20px;
+    border: 2px solid black;
+    box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.753);
+}
+
+.createPost_form{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    height: 100%;
+    justify-content: center;
+}
+
+.createPost_form input{
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.createPost_form_inputPost{
+    height: 100%;
+    min-height: 70px;
+}
+
+.modifPost_form{
+    margin: auto
+}
+
+.modifPost_button{
+    display: flex;
+    justify-content: space-around;
+    margin: 20px;
+    flex-direction: initial;
+}
+
+.commentaireModif{
+    flex-direction: column;
+}
+
+.commentaireModif_form{
+    margin: auto;
+    padding: 20px;
+}
+
+.commentaireModif_form input{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.commentaireModif button{
+    width: 20%;
+    margin: auto;
+    margin-bottom: 20px;
+    
+}
+
+.navAdmin{
+    display: flex;
+    justify-content: space-around;
+    margin: 20px;
+    font-size: 1.2em;
+}
+
+.listAdmin{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.listAdmin_box{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    height: 100%;
+    align-items: center;
+}
+
+.listAdmin_item{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 20%;
+    padding: 30px;
+    border-radius: 20px;
+    border: 2px solid black;
+    box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.753);
+}

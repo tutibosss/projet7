@@ -1,8 +1,8 @@
 <template>
-    <div>
+    <div class="listAdmin">
         <p v-if="list.length === 0"> aucun utilisateur n'a etait trouver</p>
-        <div v-else>
-            <div v-for="item in list" :key="item.id">
+        <div v-else class="listAdmin_box">
+            <div v-for="item in list" :key="item.id" class="listAdmin_item">
                 <h3>{{item.userName}}</h3>
                 <p>{{item.email}}</p>
                 <button v-if="list.length > 1 || !type" @click="modifAdmin(item.admin, item.id)">{{textButton}}</button>

@@ -1,15 +1,15 @@
 <template>
-    <article>
-        <post v-bind="{post: post}" v-if="!modifier"/>
+    <article class="PostView">
+        <post class="Post" v-bind="{post: post}" v-if="!modifier"/>
         
-        <modifPost v-bind:post="post" @annule="annuler" v-else />
+        <modifPost class="Post" v-bind:post="post" @annule="annuler" v-else />
 
-        <div v-if="(userDroit === true || admin === true) && !modifier">
+        <div v-if="(userDroit === true || admin === true) && !modifier" class="ButtonPost">
             <button @click="modif">modifier</button>
             <button @click="deletePost">suprimer le post</button>
         </div>
 
-        <commentaire v-bind="{commentaire: post.commentaire, admin: admin, userId: userId}"/>
+        <commentaire v-bind="{commentaire: post.commentaire, admin: admin, userId: userId}" class="commentaire"/>
         
     </article>
 </template>

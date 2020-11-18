@@ -1,5 +1,5 @@
 <template>
-    <section>
+    <section class="home">
         <h2>bonjour</h2>
         <listPost v-bind:listPost='listItem' v-bind:userDroit='userDroit' />
     </section>

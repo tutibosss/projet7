@@ -1,20 +1,22 @@
 <template>
     <div>
-        <div>
+        <div class="listCommentaire">
             <p v-if="commentaire < 1"> il ny a pas de comentaire pour l instant</p>
-            <div v-else v-for="(item, index) in commentaire" :key="index">
-                <article v-if="modifIndex != index">
-                    <h4>{{item.userName}}</h4>
-                    <p>{{item.commentaire}}</p>
+            <div v-else v-for="(item, index) in commentaire" :key="index" >
+                <article v-if="modifIndex != index" class="commentaireBox">
+                    <div class="commentaireText">
+                        <h4>{{item.userName}}</h4>
+                        <p>{{item.commentaire}}</p>
+                    </div>
                     <div v-if="(userId === item.userId || admin === true) && modifIndex === null">
                         <button @click="modif(index, item)">modif</button>
                         <button @click="deleteCommentaire(index)">X</button>
                     </div>       
                 </article>
          
-                <div v-else-if="modifIndex === index">
+                <div v-else-if="modifIndex === index" class="commentaireBox commentaireModif">
                     <p>{{item.userName}}</p>
-                    <form>
+                    <form class="commentaireModif_form">
                         <label for="modifCommentaire"> modifier le commentaire</label>
                         <input type="text" id="modifCommentaire" v-model="modifChamps" >
                         <input type="submit" value="envoyer la modification" @click.prevent="modifCommentaire(index)">
@@ -24,7 +26,7 @@
 
             </div>
         </div>
-        <div>
+        <div class="ButtonCommentaire">
             <input type="text" v-model="comment">
             <button @click="push">commenter</button>
         </div>

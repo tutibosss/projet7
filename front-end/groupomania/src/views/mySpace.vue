@@ -1,10 +1,10 @@
 <template>
-    <div>
-        <router-link :to="{name: 'myProfil'}">
+    <div class="home">
+        <router-link :to="{name: 'myProfil'}" class="profilView">
             <h2>Mon profil</h2>
             <profil/>
         </router-link>
-        <button v-if="listItem.length > 1" @click="deleteMyPost">suprimer tout mais post</button>
+        <button v-if="listItem.length > 0" @click="deleteMyPost">suprimer tout mais post</button>
         <listPost v-bind:listPost='listItem' v-bind:userDroit='userDroit'/>
     </div>
 </template>

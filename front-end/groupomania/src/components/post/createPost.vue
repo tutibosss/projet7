@@ -1,13 +1,16 @@
 <template>
-    <form>
-        <label for="titre">titre du post</label>
-        <input type="text " id="titre" v-model="titrePost">
+    <div class="createPost">
+        <h2>cree un post</h2>
+        <form class="createPost_form">
+            <label for="titre">titre du post</label>
+            <input type="text " id="titre" v-model="titrePost">
 
-        <label for="contenue"> contenue du post</label>
-        <input type="text" id="contenue" v-model="post">
-        
-        <input type="submit" value="cree le post" @click.prevent="newPost">
-    </form>
+            <label for="contenue"> contenue du post</label>
+            <input type="text" id="contenue" v-model="post" class="createPost_form_inputPost">
+            
+            <input type="submit" value="cree le post" @click.prevent="newPost">
+        </form>
+    </div>
 </template>
 
 <script>

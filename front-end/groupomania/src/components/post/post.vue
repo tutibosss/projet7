@@ -1,6 +1,6 @@
 <template>
     <article>
-        <div>
+        <div class="Post_titre">
             <p>publier par {{post.userName}}</p>
             <p>le  {{post.date}}</p>
         </div>

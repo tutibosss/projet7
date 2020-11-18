@@ -1,5 +1,6 @@
 <template>
   <div>
+      <p>{{error}}</p>
       <form>
           <label for="email">email</label>
           <input type="email" v-model="email" id="email">
@@ -7,9 +8,8 @@
           <label for="password" id="password">mot de passe</label>
           <input type="password" id="password" v-model="password">
 
-          <input type="submit" value="se connecter" @click.prevent= 'login'>
+          <input type="submit" value="se connecter" @click.prevent= 'login' class="buttonAuth">
       </form>
-      <p>{{error}}</p>
   </div>
 </template>
 
@@ -21,7 +21,7 @@ export default {
   data: () => { return {
     email: '',
     password: '',
-    error: '',
+    error: null,
   }},
   methods:{
     async login () {

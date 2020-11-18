@@ -1,12 +1,16 @@
 <template>
-    <div v-if="!modifProfil">
-        <profil @user-profil = "setUser"/>
-        <button @click="modif">{{message}}</button>
-        <button @click="deleteUser">suprimer le profil</button>
-    </div>
-    <div v-else>
-        <editProfil v-bind:User="user"/>
-        <button @click="modif">{{message}}</button>
+    <div class="profil">
+        <div v-if="!modifProfil" class="profilBox">
+            <profil @user-profil = "setUser" class="profilBox_view"/>
+            <div class="profilButton">
+                <button @click="modif">{{message}}</button>
+                <button @click="deleteUser">suprimer le profil</button>
+            </div>
+        </div>
+        <div v-else class="profilBox">
+            <editProfil v-bind:User="user" class="profilBox_view"/>
+            <button @click="modif" class="profilSoloButton">{{message}}</button>
+        </div>       
     </div>
 </template>
 

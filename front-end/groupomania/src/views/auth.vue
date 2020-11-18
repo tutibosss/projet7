@@ -1,8 +1,10 @@
 <template>
-    <div>
-        <h2>Bienvenue sur notre resaux social</h2>
-        <navOffline/>
-        <router-view/>
+    <div class="auth" >
+        <div class="formAuth">
+            <h2>Bienvenue sur notre resaux social</h2>
+            <navOffline/>
+            <router-view/>
+        </div>
     </div>
 </template>
 

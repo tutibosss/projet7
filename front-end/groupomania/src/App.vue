@@ -1,10 +1,8 @@
 <template>
-  <div>
+  <div class="divPrincipal">
     <header>
       <h1>groupomania</h1>
     </header>
-    <router-view/>
+    <router-view class="routerview"/>
   </div>
 </template>
-
-

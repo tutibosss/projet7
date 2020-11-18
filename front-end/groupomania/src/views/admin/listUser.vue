@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="listAdmin">
         <h2>Liste des admin actif</h2>
         <listUser v-bind="{list: list, type: false}"/>
     </div>
