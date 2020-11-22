@@ -2,7 +2,7 @@ const db = require('../middelware/db/connectDataBase')
 const emailCrypte = require('../middelware/masqueEmail')
 
 exports.getUser = (req, res) => {
-    const sql = 'SELECT userName, email, id, admin FROM user WHERE admin = ?'
+    const sql = 'SELECT userName, email, id, admin, fileName FROM user WHERE admin = ?'
     const value = req.params.value
     db.query(sql, value, (error,result) => {
         if(error) return res.status(400).json('une erreur c est produite ')

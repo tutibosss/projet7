@@ -3,269 +3,316 @@ body {
     margin: 0px;
     min-height: 100vh;
     width: 100%;
+    background-color: rgb(189, 187, 181);
+}
+.routerview{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.divPrincipal{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 }
 
 header{
     text-align: center;
-}
-
-h2 {
-    display: flex;
-    width: 100%;
-    justify-content: center;
-}
-
-a{
-    text-decoration: none;
-    color: black;
-}
-
-nav {
-    font-size: 1.5em;
-    display: flex;
-    justify-content: space-around;
-    padding: 10px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-form {
-    width: 60%;
-    display: flex;
-    flex-direction: column;
-}
-
-.marginAuto{
-    margin: auto;
-}
-
-.displayFlexCenter{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-}
-
-.divPrincipal{
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-}
-
-.routerview{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 100%;
-}
-
-.auth {
-    display: flex;
-    margin: auto;
-    justify-content: center;
-    align-items: center;
-    width: 50%;
-}
-
-
-.formAuth{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-radius: 30px;
-    box-shadow: 10px 5px 5px rgba(145, 144, 144, 0.514);
-    width: 100%;
-    height: auto;
-    background-color: rgba(128, 128, 128, 0.623);
-    padding: 30px;
-}
-
-.formAuth nav{
-    width: 100%;
+    height: 100px;
+    background-color: rgb(27, 46, 77);
+    color: white;
 }
 
 .error{
     color: red;
+    font-size: 1.1em;
+}
+
+/* partie connection ou inscription  */
+
+.auth{
+    display: flex;
+    width: 60%;
+    min-height: auto;
+    margin: auto;
+}
+
+.formAuth{
+    display: flex;
+    margin: auto;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    text-align: center;
+    justify-content: center;
+    border: 2px solid black;
+    border-radius: 20px;
+    padding-bottom: 20px;
     font-size: 1.2em;
+}
+
+.formAuth nav{
+    display: flex;
+    padding: 10px;
+    justify-content: space-around;
+}
+
+.formAuth a {
+    border: 2px solid black;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 10px;
 }
 
 .formAuth div{
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 80%;
+    height: auto;
 }
 
-.buttonAuth{
-    width: 50%;
-}
-
-.formAuth input {
-    text-align: center;
-    height: 30px;
-    width: 100%;
-    border-radius: 30px;
-    box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.753);
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-
-.formAuth label{
-    text-align: center;
-    font-size: 1.2em;
-}
-
-.formAuth h3 {
-    font-size: 2em;
-}
-
-.home {
+.formAuth form {
     display: flex;
     flex-direction: column;
+    width: 50%;
+    margin: auto;
+
+}
+
+.formAuth form input{
+    margin-top: 5px;
+    margin-bottom: 10px;
+    padding: 5px;
+    text-align: center;
+}
+
+.buttonAuth {
+    margin: auto;
+    margin-top: 20px;
+    padding: 5px;
+    width: 50%;
+    border-radius: 10px;
+}
+
+/* partie home */
+
+nav{
+    display: flex;
     align-items: center;
+    justify-content: space-around;
+    font-size: 1.5em;
+    padding: 20px;
+}
+
+.home{
+    display: flex;
+    flex-direction: column;
     height: 100%;
+    text-align: center;
 }
 
 .listPost{
     display: flex;
     flex-direction: column;
-    width: 50%;
-    height: 100%;
-    align-items: center;
-    justify-content: center;
+    width: 60%;
+    margin: auto;
 }
 
-.Post{
-    text-decoration: none;
-    color: black;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    border-radius: 20px;
-    border: 2px solid black;
-    box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.753);
-    margin-top: 10px;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.Post_titre {
-    display: flex;
-    flex-direction: column;
-    padding-left: 30px;
-    text-align: left;
-    background-color: rgba(222, 184, 135, 0.596);
-    border-radius: 20px;
-}
-
-.Post div p {
-    margin: 5px;
-}
-
-.profilView {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    text-align: center;
+.Post {
     border: 1px solid black;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    text-align: center;
 }
+
+.Post_titre{
+    display: flex;
+    padding: 10px;
+    border-bottom: 1px solid black;
+    text-align: left;
+    padding-left: 30px;
+
+}
+
+.Post_titre div{
+    margin-left: 20px;
+}
+/* partie openpost */
 
 .PostView{
     display: flex;
     flex-direction: column;
     height: 100%;
-}
-
-.commentaire{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    border-radius: 20px;
-    border: 2px solid black;
-    box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.753);
-    margin-top: 20px;
-}
-
-.commentaireBox{
-    display: flex;  
-    border-radius: 20px;
-    border: 2px solid black;
-    margin: 10px; 
-}
-
-.commentaireBox div{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-}
-
-.commentaireText{
-    width: 90%;
-}
-
-.listCommentaire {
-    display: flex;
-    height: 100%;
-    justify-content: center;
-    flex-direction: column;
-}
-
-.commentaire button {
-    width: auto;
-}
-
-.ButtonCommentaire{
-    display: flex;
-    padding: 10px;
-    justify-content: space-around;
-    position: sticky;
-    bottom: 0;
-    background-color: rgb(222, 184, 135);
-    border-radius: 10px;
-}
-
-.ButtonCommentaire input{
-    width: 90%;
+    /* margin-top: 20px; */
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .ButtonPost{
     display: flex;
     justify-content: space-around;
+    padding: 10px;
+}
+
+.ButtonPost button{
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 10px;
+}
+
+.commentaire{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    text-align: center;
     border-radius: 20px;
+    border: 1px solid black;
+    margin-top: 20px;
+}
+
+.listCommentaire{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+}
+
+.ButtonCommentaire{
+    display: flex;
+    margin: 0;
+    justify-content: space-around;
+    position: sticky;
+    bottom: 0;
+    padding: 10px;
     border: 2px solid black;
-    box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.753);
-    padding: 15px;
+    background-color: rgb(27, 46, 77);
+}
+
+.ButtonCommentaire input{
+    width: 90%;
+    height: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+/* commentaire dans la liste */
+
+.imgCommentaire{
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+}
+
+.commentaireBox{
+    display: flex;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 20px;
+}
+
+.commentaireText{
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+
+.commentaireText div{
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
+.commentaireText div h4{
+    margin-left: 20px;
+}
+
+.commentaireBox_button{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+/* modification des commentaire */
+
+.commentaireModif{
+    flex-direction: column;
+}
+
+.commentaireModif_form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.commentaireModif_form div{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+    width: 100%;
+}
+
+#modifCommentaire{
+    width: 80%;
+    height: 20px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* modif du post  */
+
+.modifPost_form{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    margin: auto;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.modifPost_form div {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    border-bottom: none;
+}
+
+
+
+.modifPost_form input{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    text-align: center;
+    padding: 5px;
+}
+
+.createPost_form_inputPost{
+    height: 60px;
+}
+
+/* partie profil */
+
+.photoProfil{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
 }
 
 .profil{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
     height: 100%;
+    display: flex;
 }
 
 .profilBox{
     display: flex;
     flex-direction: column;
+    align-items: center;
+    width: 60%;
     margin: auto;
-    justify-content: center;
-    border-radius: 20px;
-    width: 50%;
-    min-height: 50%;
-    height: auto;
-    border: 2px solid black;
-    box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.753);
-    padding: 15px;
+    border: 1px solid black;
+    padding: 30px;
 }
 
 .profilBox_view{
@@ -273,135 +320,198 @@ form {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 80%;
 }
 
-.profilButton {
+.profilButton{
     display: flex;
-    width: 100%;
     justify-content: space-around;
+    margin:30px;
+    width: 100%;
 }
 
-.profilSoloButton{
-    width: 20%;
-    margin: auto;
+.profilButton button{
+    padding: 10px;
+    border-radius: 10px;
 }
 
-.profilForm{
+.profilView{
     display: flex;
     flex-direction: column;
-    margin: auto;
-    width: 70%;
-    height: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid red;
+    border-top: 1px solid red;
 }
 
-.profilForm_checbox{
+.deletePost{
     display: flex;
-    margin: 10px;
-}
-
-.profilForm_checbox input{
-    margin-right: 10px;
-}
-
-.profilForm_input{
-    margin: 10px;
-}
-
-.createPost{
-    flex-direction: column;
-    display: flex;
-    width: 50%;
-    min-height: 50%;
-    height: auto;
     margin: auto;
     justify-content: center;
-    padding: 30px;
-    border-radius: 20px;
-    border: 2px solid black;
-    box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.753);
+    align-items: center;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    width: 70%;
+    height: 30px;
 }
+
+/* cree post */
+
+.createPost{
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    margin: auto;
+    padding: 30px;
+    border: 1px solid black;
+    border-radius: 10px;
+    text-align: center;
+}  
 
 .createPost_form{
     display: flex;
     flex-direction: column;
-    margin: auto;
-    height: 100%;
-    justify-content: center;
 }
 
-.createPost_form input{
-    margin-top: 5px;
-    margin-bottom: 10px;
+.createPost_form input {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    border-radius: 20px;
 }
 
-.createPost_form_inputPost{
-    height: 100%;
-    min-height: 70px;
-}
-
-.modifPost_form{
-    margin: auto
-}
-
-.modifPost_button{
+.createPost_form_button{
     display: flex;
-    justify-content: space-around;
-    margin: 20px;
-    flex-direction: initial;
-}
-
-.commentaireModif{
-    flex-direction: column;
-}
-
-.commentaireModif_form{
+    width: 60%;
     margin: auto;
-    padding: 20px;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
 }
 
-.commentaireModif_form input{
+/* modif post */
+
+.profilForm{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.profilForm input{
     margin-top: 10px;
     margin-bottom: 10px;
+    text-align: center;
 }
 
-.commentaireModif button{
-    width: 20%;
-    margin: auto;
-    margin-bottom: 20px;
-    
+.profilForm_checbox label{
+    margin-left: 10px;
+}
+
+/* parti admin */
+
+.adminView{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    text-align: center;
 }
 
 .navAdmin{
     display: flex;
     justify-content: space-around;
-    margin: 20px;
-    font-size: 1.2em;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .listAdmin{
     display: flex;
     flex-direction: column;
-    width: 100%;
     height: 100%;
 }
 
+.listAdmin p {
+    margin: auto;
+}
 .listAdmin_box{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
     height: 100%;
-    align-items: center;
 }
 
 .listAdmin_item{
     display: flex;
+    margin: auto;
+    margin-top: 20px;
     flex-direction: column;
-    text-align: center;
-    width: 20%;
-    margin: 15px;
-    padding: 30px;
-    border-radius: 20px;
     border: 2px solid black;
-    box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.753);
+    border-radius:  10px;
+    padding: 20px;
+}
+
+.listAdmin_item img{
+    margin: auto;
+}
+
+.listAdmin_item p {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+@media screen and (max-width: 650px){
+    /* patie auth */
+    .auth{
+        width: 90%;
+        font-size: .6em;
+    }
+     .auth form{
+        width: 90%;
+     }
+
+     /* partie nav  */
+     .routerview nav {
+         flex-wrap: wrap;
+         font-size: 1em;
+         padding: 0px;
+     }
+
+     .routerview nav a {
+         margin: 10px;
+     }
+
+     /* patie home */
+
+     .listPost {
+         width: 90%;
+     }
+
+     .photoProfil{
+         margin: auto;
+        width: 50px;
+        height: 50px;
+     }
+
+     .Post_titre{
+         padding: 0px;
+     }
+
+     .Post_titre div{
+         margin-left: 5px;
+     }
+
+     .profilBox{
+         width: 80%;
+         padding: 20px;
+     }
+
+     .profilForm{
+         width: 80%;
+     }
+
+     .profilButton{
+         flex-direction: column;
+         margin: 10px;
+     }
+
+     .profilButton button{
+         margin-top: 10px;
+     }
 }

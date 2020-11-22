@@ -1,8 +1,12 @@
 <template>
     <article>
         <div class="Post_titre">
-            <p>publier par {{post.userName}}</p>
-            <p>le  {{post.date}}</p>
+            <img :src="route" alt="" class="photoProfil">
+            <div>
+                <p>publier par :<br>
+                 {{post.userName}}</p>
+                <p>le  {{post.date}}</p>
+            </div>
         </div>
         <h2>{{post.titrePost}}</h2>
         <p>{{post.post}}</p>
@@ -10,7 +14,9 @@
 </template>
 
 <script>
+
 export default {
-    props: ['post']
+    props: ['post', 'route']
 }
+
 </script>

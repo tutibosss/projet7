@@ -3,6 +3,7 @@
         <p v-if="list.length === 0"> aucun utilisateur n'a etait trouver</p>
         <div v-else class="listAdmin_box">
             <div v-for="item in list" :key="item.id" class="listAdmin_item">
+                <img :src="require('../../image/' + item.fileName)" alt="" class="photoProfil">
                 <h3>{{item.userName}}</h3>
                 <p>{{item.email}}</p>
                 <button v-if="list.length > 1 || !type" @click="modifAdmin(item.admin, item.id)">{{textButton}}</button>
@@ -22,6 +23,7 @@ export default {
         textButton: ''
     }},
     mounted () {
+        console.log(this.list)
         if(!this.type) return this.textButton = "passe l'utilisateur admin"
         this.textButton = "enlever les droit d'admin"
     },

@@ -1,6 +1,6 @@
 <template>
     <article class="PostView">
-        <post class="Post" v-bind="{post: post}" v-if="!modifier"/>
+        <post class="Post" v-bind="{post: post, route: route}" v-if="!modifier"/>
         
         <modifPost class="Post" v-bind:post="post" @annule="annuler" v-else />
 
@@ -25,6 +25,7 @@ import modifPost from './modifPost'
 export default {
     data: () => {return {
         post: '',
+        route: '',
         comment: '',
         admin: false,
         userDroit: false,
@@ -34,15 +35,16 @@ export default {
     components: {
         commentaire,
         post,
-        modifPost
+        modifPost,
     },
-    async mounted () {
+    async beforeCreate () {
          const user = JSON.parse(localStorage.getItem('user'))
          const postId = this.$route.params.postId 
 
          const reponse = await Req.getPostId(postId)
          if(reponse.ok != true) alert('tricheur') //fonction pour renvoyer au loin
          this.post = reponse.body
+         this.route = require('../../image/'+reponse.body.fileName)
      
         if(user.admin) this.admin = true
         if(user.userId === this.post.userId) this.userDroit = true

@@ -5,10 +5,13 @@
             <div v-else v-for="(item, index) in commentaire" :key="index" >
                 <article v-if="modifIndex != index" class="commentaireBox">
                     <div class="commentaireText">
-                        <h4>{{item.userName}}</h4>
+                        <div>
+                            <img :src="require('../../image/'+ item.fileName)" alt="" class="imgCommentaire">
+                            <h4>{{item.userName}}</h4>
+                        </div>
                         <p>{{item.commentaire}}</p>
                     </div>
-                    <div v-if="(userId === item.userId || admin === true) && modifIndex === null">
+                    <div v-if="(userId === item.userId || admin === true) && modifIndex === null" class="commentaireBox_button">
                         <button @click="modif(index, item)">modif</button>
                         <button @click="deleteCommentaire(index)">X</button>
                     </div>       
@@ -19,11 +22,12 @@
                     <form class="commentaireModif_form">
                         <label for="modifCommentaire"> modifier le commentaire</label>
                         <input type="text" id="modifCommentaire" v-model="modifChamps" >
-                        <input type="submit" value="envoyer la modification" @click.prevent="modifCommentaire(index)">
+                        <div>
+                            <input type="submit" value="envoyer la modification" @click.prevent="modifCommentaire(index)">
+                            <input type="button" value="annule" @click.prevent="annuleModif">
+                        </div>
                     </form>
-                    <button @click="annuleModif">annule</button>
                 </div>
-
             </div>
         </div>
         <div class="ButtonCommentaire">

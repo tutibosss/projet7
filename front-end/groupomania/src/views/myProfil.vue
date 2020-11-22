@@ -29,6 +29,10 @@ export default {
         modifProfil: false,
         message: 'moifier le profil'
     }},
+
+    monted () {
+        console.log(this.user)
+    },
     methods: {
         setUser(payload) {
             this.user = payload

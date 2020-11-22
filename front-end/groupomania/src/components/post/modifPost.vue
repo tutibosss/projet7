@@ -10,11 +10,11 @@
 
             <label for="contenue"> contenue du post</label>
             <input type="text" id="contenue" v-model="contenuPost" class="createPost_form_inputPost">
-        </form>
-        <div class="modifPost_button">
-            <button @click="annule"> annule </button>  
-            <button @click="modifCommentaire"> valide la modification </button> 
-        </div>     
+            <div class="modifPost_button">
+                <input  type="button" @click.prevent="annule" value="annule">   
+                <input type="submit" @click.prevent="modifCommentaire" value="valide la modification">
+            </div> 
+        </form>    
     </div>
 </template>
 

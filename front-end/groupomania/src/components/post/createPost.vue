@@ -8,7 +8,7 @@
             <label for="contenue"> contenue du post</label>
             <input type="text" id="contenue" v-model="post" class="createPost_form_inputPost">
             
-            <input type="submit" value="cree le post" @click.prevent="newPost">
+            <input type="submit" value="cree le post" @click.prevent="newPost" class="createPost_form_button">
         </form>
     </div>
 </template>
