@@ -1,8 +1,12 @@
 <template>
     <div>
         <div class="Post_titre">
-            <p>publier par {{post.userName}}</p>
-            <p>le  {{post.date}}</p>
+            <img :src="require('../../image/'+post.fileName)" alt="" class="photoProfil">
+            <div>
+                <p>publier par <br>
+                {{post.userName}}</p>
+                <p>le  {{post.date}}</p>
+            </div>
         </div>
         <form class="modifPost_form">
             <label for="titre">titre du post</label>
