@@ -6,11 +6,12 @@
                 <button @click="modif">{{message}}</button>
                 <button @click="deleteUser">suprimer le profil</button>
             </div>
+            <router-link :to="{name : 'myPage'}">retour a mon espace</router-link>  
         </div>
         <div v-else class="profilBox">
             <editProfil v-bind:User="user" class="profilBox_view"/>
             <button @click="modif" class="profilSoloButton">{{message}}</button>
-        </div>       
+        </div>  
     </div>
 </template>
 
@@ -29,10 +30,6 @@ export default {
         modifProfil: false,
         message: 'moifier le profil'
     }},
-
-    monted () {
-        console.log(this.user)
-    },
     methods: {
         setUser(payload) {
             this.user = payload

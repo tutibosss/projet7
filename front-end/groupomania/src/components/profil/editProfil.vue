@@ -3,6 +3,7 @@
     <h3>modifier mon profil</h3>
     <form class="profilForm" id="form" @submit.prevent="putProfil" >
         <label for="photoProfil">photo de profil</label>
+        <img :src="miniature" alt="" class="photoProfil marginAuto">
         <input type="file" id="photoProfil" accept=".png,.jpg,.jpeg,.svg" @change="files">
 
         <label for="firstName"> prenom </label>
@@ -34,8 +35,10 @@ const verif = require('./verifPasseword')
 export default {
     props: ['User'],
     beforeMount () {
+        console.log(this.User, 'hjlhjk');
         this.email = this.User.email
         this.userName = this.User.userName
+        this.miniature = require('../../image/'+ this.User.fileName)
     },
     data: () => {
         return{
@@ -45,13 +48,20 @@ export default {
             holdPassword: '',
             newPassword: '',
             message: '',
-            file: null
+            file: null,
+            miniature: ''
         }
     },
     methods: {
         files (event) {
             console.log(event)
             this.file = event.target.files[0]
+
+            const reader = new FileReader()
+            reader.onload = () => {
+                this.miniature = reader.result
+            }
+            reader.readAsDataURL(event.target.files[0]) 
         },
 
         async putProfil () {
@@ -92,7 +102,7 @@ export default {
             user.userName = this.userName
             localStorage.setItem('user', JSON.stringify(user))
             alert(reponse.body)
-            this.$router.push({name: 'myPage'}) 
+            window.location.reload()
         }
     }
 }
