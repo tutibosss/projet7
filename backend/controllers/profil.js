@@ -5,7 +5,7 @@ const fs = require('fs');
 
 exports.getUser = (req, res) => {
     const userId = req.params.id
-    const sql = 'SELECT email, userName, fileName FROM user WHERE id = ?'
+    const sql = 'SELECT email, userName, fileName, admin FROM user WHERE id = ?'
     db.query(sql, userId, (error, result) => {
         if(error) return res.status(400).json('une erreur ses produit veuille re essaye plus tard')
         result[0].email = emailCrypt.decrypte(result[0].email)

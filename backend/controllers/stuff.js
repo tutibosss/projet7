@@ -17,7 +17,7 @@ exports.newPost = (req, res) => {
         }
         db.query(sql, value, (error,result) => {
             if(error) return res.status(400).json('une erre c est produite');
-            return res.status(200).json({message: 'post créé'})
+            return res.status(200).json('post créé')
         })
     })
 }

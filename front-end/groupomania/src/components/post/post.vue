@@ -5,7 +5,8 @@
             <div>
                 <p>publier par :<br>
                  {{post.userName}}</p>
-                <p>le  {{post.date}}</p>
+                 <p>le  {{new Date(post.date).toLocaleDateString('eu-FR', { year: 'numeric', month: 'long', day: 'numeric' })}} 
+                    a  {{new Date(post.date).toLocaleTimeString('eu-FR')}}</p>
             </div>
         </div>
         <h2>{{post.titrePost}}</h2>

@@ -27,7 +27,7 @@ export default {
         post: '',
         route: '',
         comment: '',
-        admin: false,
+        admin: '',
         userDroit: false,
         userId: '',
         modifier: false
@@ -46,7 +46,7 @@ export default {
          this.post = reponse.body
          this.route = require('../../image/'+reponse.body.fileName)
      
-        if(user.admin) this.admin = true
+        this.admin = this.$store.state.admin
         if(user.userId === this.post.userId) this.userDroit = true
 
         this.userId = user.userId

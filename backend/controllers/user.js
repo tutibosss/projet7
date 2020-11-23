@@ -54,7 +54,6 @@ exports.login = async (req, res) => {
                     return res.status(200).json({
                         userId: user.id,
                         userName: user.userName,
-                        admin: true,
                         token: token.sign(
                             {userId: user.id, admin: true},
                             process.env.DB_token,

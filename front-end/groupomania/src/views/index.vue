@@ -1,23 +1,23 @@
 <template>
     <div>
-        <navOnline v-bind="{admin: admin}"/>
+        <navOnline v-bind="{admin: this.$store.state.admin}"/>
         <router-view/>
     </div>
 </template>
 
 <script>
 import navOnline from '../components/nav/navOnline'
+const req = require('../axios/requette')
 export default {
     components : {
         navOnline
     },
-    data : () => {return{
-        admin: false
-    }},
-    mounted() {
-        console.log('cbn')
-        const user = JSON.parse(localStorage.getItem('user'))
-        if(user.admin != undefined && user.admin) this.admin = user.admin
+    async beforeCreate(){
+            const user = JSON.parse(localStorage.getItem('user'))
+            const rep = await req.getUser(user.userId)
+            if(!rep.ok) return alert('une erreur c st produite')
+            const admin = JSON.parse(rep.body.admin)
+            this.$store.commit('adminStatue', admin)
     }
 }
 </script>
