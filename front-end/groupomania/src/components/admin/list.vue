@@ -6,7 +6,7 @@
                 <img :src="require('../../image/' + item.fileName)" alt="" class="photoProfil">
                 <h3>{{item.userName}}</h3>
                 <p>{{item.email}}</p>
-                <button v-if="list.length > 1 || !type" @click="modifAdmin(item.admin, item.id)">{{textButton}}</button>
+                <button v-if="(list.length > 1 || !type )&& userId != item.id" @click="modifAdmin(item.admin, item.id)">{{textButton}}</button>
             </div>
         </div>
     </div>
@@ -20,10 +20,12 @@ export default {
         type: {type: Boolean}
     },
     data: () => {return {
-        textButton: ''
+        textButton: '',
+        userId: '',
     }},
-    mounted () {
-        console.log(this.list)
+    beforeMount () {
+        this.userId = JSON.parse(localStorage.getItem('user')).userId
+        
         if(!this.type) return this.textButton = "passe l'utilisateur admin"
         this.textButton = "enlever les droit d'admin"
     },
@@ -40,6 +42,7 @@ export default {
             if(!reponse.ok) alert('ne erreur cest produite')
             alert("le status de l'utilisateur a bien etait modifier")
             this.$router.push({name: 'listAdmin'})
+            window.location.reload()
         }
     }
 }

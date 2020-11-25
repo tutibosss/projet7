@@ -41,16 +41,13 @@ exports.login = async (req, res) => {
         }
 
         const user = result[0]
-        console.log(user.admin)
         
         bcrypte.compare(req.body.password, user.password)
             .then(valid => {
                 if(!valid){
                     return res.status(401).json('mauvais mot de passe')
                 }
-                console.log(user.admin)
                 if(user.admin === 'true'){
-                    console.log('admin')
                     return res.status(200).json({
                         userId: user.id,
                         userName: user.userName,
@@ -61,7 +58,6 @@ exports.login = async (req, res) => {
                         )
                     });
                 }else{
-                    console.log("pas admin")
                     res.status(200).json({
                         userId: user.id,
                         userName: user.userName,

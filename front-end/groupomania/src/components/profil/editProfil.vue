@@ -35,7 +35,6 @@ const verif = require('./verifPasseword')
 export default {
     props: ['User'],
     beforeMount () {
-        console.log(this.User, 'hjlhjk');
         this.email = this.User.email
         this.userName = this.User.userName
         this.miniature = require('../../image/'+ this.User.fileName)
@@ -54,7 +53,6 @@ export default {
     },
     methods: {
         files (event) {
-            console.log(event)
             this.file = event.target.files[0]
 
             const reader = new FileReader()
@@ -72,8 +70,6 @@ export default {
             }
             //verifier ci il y a un changement
             let update = {email: this.email, userName: this.userName}
-            console.log(fd)
-            console.log(this.User.userName === update.userName && this.User.email === update.email && !this.checkbox && fd === null)
             if(this.User.userName === update.userName && this.User.email === update.email && !this.checkbox && fd === undefined) return this.message = 'vous navez effuctuer aucune modif'
             
             //ajout de userId
@@ -89,7 +85,6 @@ export default {
                 if(!verif.taille(this.holdPassword) || !verif.taille(this.newPassword)) return this.message = ("l'un de vos mot de passe ne correspond pas au critaire")
                 update = {...update, holdPassword: this.holdPassword, newPassword: this.newPassword}
                 }
-            console.log(update)
 
             if(fd){
                 fd.append('profil', JSON.stringify(update))

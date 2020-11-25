@@ -28,7 +28,6 @@ const req = require('../../axios/requette')
 export default {
     props: ['post'],
     mounted () {
-        console.log(this.post)
         this.contenuPost = this.post.post
         this.titrePost = this.post.titrePost
     },
@@ -49,11 +48,9 @@ export default {
 
            const user = JSON.parse(localStorage.getItem('user'))
            if(user.admin){
-               console.log('admin')
                const reponse = await req.adminModifPost(idPost, update)
                 if(reponse.ok != true) return alert('tricheur') //fonction pour renvoyer au loin
            }else{
-               console.log('pasadmin')
                 const reponse = await req.modifPost(idPost, update)
                 if(reponse.ok != true) return alert('tricheur') //fonction pour renvoyer au loin
            }

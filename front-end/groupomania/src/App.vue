@@ -1,7 +1,7 @@
 <template>
   <div class="divPrincipal">
     <header>
-      <h1>groupomania</h1>
+      <img :src="require('./assets/icon-left-font-monochrome-white.svg')" class="header-photo" alt="">
     </header>
     <router-view class="routerview"/>
   </div>

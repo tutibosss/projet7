@@ -25,15 +25,23 @@ label{
 }
 
 header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
     height: 100px;
-    background-color: rgb(27, 46, 77);
+    background-color: #102f5E;
     color: white;
+    padding: 20px;
 }
 
 .error{
     color: red;
     font-size: 1.1em;
+}
+
+.router-link-active{
+    opacity: 0.5;
 }
 
 /* partie connection ou inscription  */
@@ -57,6 +65,8 @@ header{
     border-radius: 20px;
     padding-bottom: 20px;
     font-size: 1.2em;
+    background-color: #102f5E;
+    color: white;
 }
 
 .formAuth nav{
@@ -71,6 +81,9 @@ header{
     padding-left: 20px;
     padding-right: 20px;
     border-radius: 10px;
+    background-color: white;
+    text-decoration: none;
+    color: black;
 }
 
 .formAuth div{
@@ -112,6 +125,14 @@ nav{
     padding: 20px;
 }
 
+nav a{
+    text-decoration: none;
+    padding: 20px;
+    background-color: white;
+    color: black;
+    border-radius: 20px;
+}
+
 .home{
     display: flex;
     flex-direction: column;
@@ -131,6 +152,9 @@ nav{
     border-radius: 10px;
     margin-bottom: 20px;
     text-align: center;
+    background-color: white;
+    color: black;
+    text-decoration: none;
 }
 
 .Post_titre{
@@ -140,7 +164,8 @@ nav{
     border-bottom: 1px solid black;
     text-align: left;
     padding-left: 30px;
-
+    background-color: #102F5E;
+    color: white;
 }
 
 .Post_titre div{
@@ -178,8 +203,11 @@ nav{
     border-radius: 20px;
     border: 1px solid black;
     margin-top: 20px;
+    background-color:#102F5E;
 }
-
+.commentaire p{
+    color: white;
+}
 .listCommentaire{
     display: flex;
     flex-direction: column;
@@ -219,12 +247,17 @@ nav{
     padding: 10px;
     border: 1px solid black;
     border-radius: 20px;
+    background-color: white;
 }
 
 .commentaireText{
     display: flex;
     flex: 1;
     flex-direction: column;
+}
+
+.commentaireText p{
+    color: black;
 }
 
 .commentaireText div{
@@ -322,6 +355,17 @@ nav{
     margin: auto;
     border: 1px solid black;
     padding: 30px;
+    background-color: #102F5E;
+    color: white;
+    border-radius: 20px;
+}
+
+.profilBox a{
+    padding: 10px;
+    border-radius: 20px;
+    color: black;
+    text-decoration: none;
+    background-color: white;
 }
 
 .profilBox_view{
@@ -344,6 +388,9 @@ nav{
 }
 
 .profilView{
+    text-decoration: none;
+    color: white;
+    background-color: #102f5E;
     display: flex;
     flex-direction: column;
     margin-top: 20px;
@@ -366,6 +413,8 @@ nav{
 /* cree post */
 
 .createPost{
+    background-color: #102f5E;
+    color: white;
     display: flex;
     flex-direction: column;
     width: 60%;
@@ -424,11 +473,20 @@ nav{
 }
 
 .navAdmin{
+    font-size: 1.3em;
     display: flex;
     justify-content: space-around;
     width: 100%;
     margin-top: 10px;
     margin-bottom: 10px;
+}
+
+.navAdmin a{
+    padding: 10px;
+    background-color: #102f5E;
+    color: white;
+    border-radius: 20px;
+    text-decoration: none;
 }
 
 .listAdmin{
@@ -447,6 +505,8 @@ nav{
 }
 
 .listAdmin_item{
+    background-color: #102f5E;
+    color: white;
     display: flex;
     margin: auto;
     margin-top: 20px;
@@ -481,6 +541,7 @@ nav{
          font-size: 1em;
          padding: 0px;
      }
+     
 
      .routerview nav a {
          margin: 10px;
@@ -513,6 +574,10 @@ nav{
 
      .profilForm{
          width: 80%;
+     }
+
+     .profilForm img{
+         margin: auto;
      }
 
      .profilButton{

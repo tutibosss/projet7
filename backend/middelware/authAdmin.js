@@ -8,8 +8,6 @@ module.exports = (req, res, next) => {
     const userId = decodedToken.userId;
     const admin = decodedToken.admin
 
-    console.log(userId, admin)
-
     if (req.body.userId && req.body.userId !== userId && !admin) {
       throw 'Invalid user ID';
     } else {

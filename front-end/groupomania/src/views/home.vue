@@ -1,6 +1,6 @@
 <template>
     <section class="home">
-        <h2>bonjour</h2>
+        <h2>Bienvenue voici la liste des poste</h2>
         <listPost v-bind:listPost='listItem' v-bind:userDroit='userDroit' />
     </section>
 </template>
@@ -11,7 +11,6 @@ const req = require('../axios/requette')
 export default {
     async beforeCreate () {
         const reponse = await req.getAllPost()
-        console.log(reponse)
         if(reponse.ok != true) alert('tricheur') //fonction pour renvoyer au loin
         this.listItem = reponse.body
     },

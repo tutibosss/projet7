@@ -11,7 +11,6 @@ exports.crypte =  (string) => {
         emailArray[i] = emailArray[i] + 7 - i;
         emailArray[i] = String.fromCharCode(emailArray[i]);
     }
-    console.log(emailArray.join(''))
     let resultat = Buffer.from(emailArray.join(''), 'utf-8');
     resultat = resultat.toString('base64')
     return resultat
@@ -20,7 +19,6 @@ exports.crypte =  (string) => {
 exports.decrypte = (string) => {
     const buffer = Buffer.from(string, "base64")
     let SString = buffer.toString('utf-8')
-    console.log(SString)
     let emailArray = SString.split('')
     
     for(let i = 0; i<emailArray.length; i++){

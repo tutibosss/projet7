@@ -40,7 +40,6 @@ exports.modifProfil = async (req, res) => {
 
     const deletFile = (repFile) =>{
         if(req.file && repFile != 'pictureUserDefault.png'){
-            console.log('suprime')
             fs.unlink('../front-end/groupomania/src/image/' + repFile, (err) => {
                 if(err) return res.status(400).json('une erreur est survenue')
             })
@@ -57,8 +56,6 @@ exports.modifProfil = async (req, res) => {
     db.query(sql, update.email, (error,result) => {
 
         const fileName = result[0].fileName
-        console.log(fileName)
-
         if(error) return res.status(400).json('une erreur ses produit veuille re essaye plus tard')
         
         if(result.length != 0 && result[0].id != user) return res.status(400).json('votre adress mail et utilise sur un autre compte')
@@ -78,7 +75,6 @@ exports.modifProfil = async (req, res) => {
                 delete update.holdPassword
                 delete update.newPassword
                 update.password = password
-                console.log(update)
     
                 const sql = 'UPDATE user SET ? WHERE id = ?'
                 
@@ -91,7 +87,6 @@ exports.modifProfil = async (req, res) => {
         }else{
             //si il n'y a pas le mot de passe
             const sql = 'UPDATE user SET ? WHERE id = ?'
-            console.log(update)
             db.query(sql,[update, user], (error, result) => {
                 if(error) return res.status(400).json("une erreur c'est produite")
                 res.status(200).json('la modification a etait effectuer')

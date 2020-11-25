@@ -23,7 +23,6 @@ exports.newPost = (req, res) => {
 }
 
 exports.newCommentaire = (req, res) =>{
-    console.log(req.body)
     const Sql = 'SELECT fileName FROM user WHERE id = ?'
     db.query(Sql, req.body.userId, (error, result) => {
         if(error) return res.status(400).json("une erreur c'est produite")
@@ -50,7 +49,6 @@ exports.newCommentaire = (req, res) =>{
 }
 
 exports.modifCommentaire = (req, res) => {
-    console.log(req.body)
     const postId = req.params.id
 
     const sql = 'SELECT commentaire FROM post WHERE id= ?'
@@ -59,12 +57,10 @@ exports.modifCommentaire = (req, res) => {
 
         let commentaire = JSON.parse(result[0].commentaire)
         commentaire[req.body.index].commentaire =  req.body.newCommentaire
-        console.log(commentaire)
         
         const update = JSON.stringify(commentaire)
         const SQL = "UPDATE post SET commentaire = ? WHERE id = ?"
         db.query(SQL, [update ,postId], (error ,result) => {
-            console.log(error)
             if(error) return res.status(400).json('une erreur c est produite');
             res.status(200).json('modification effectuer')
         })
@@ -75,7 +71,6 @@ exports.modifCommentaire = (req, res) => {
 exports.modifPost = (req, res) => {
     const sql = "UPDATE post SET ? WHERE id = ?"
     db.query(sql, [req.body, req.params.id], (error, result) => {
-        console.log(error)
         if(error) return res.status(400).json('une erreur c est produit')
         res.status(200).json('votre mise a jour a bien etait effectuer')
     })
@@ -110,7 +105,6 @@ exports.deletePost = (req, res) =>{
 }
 
 exports.deleteAllPost = async (req, res) => {
-        console.log('delete')
         const user = req.params.id
         const sql = 'DELETE FROM post WHERE userId = ?'
         db.query(sql, user, (error, result) => {

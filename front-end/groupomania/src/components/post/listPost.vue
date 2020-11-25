@@ -14,9 +14,6 @@ export default {
         listPost: {type: Array},
         userDroit: {type: Boolean}
     },
-    mounted () {
-        console.log(this.listPost)
-    },
     components:{
         post
     }
