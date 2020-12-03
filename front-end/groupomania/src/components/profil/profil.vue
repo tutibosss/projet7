@@ -17,7 +17,7 @@ export default {
 
         const reponse = await req.getUser(user.userId)
 
-        if(reponse.ok != true) return alert('tricheur') //fonction pour renvoyer au loin
+        if(reponse.ok != true) return alert('une erreur cest produite')
 
         this.email = reponse.body.email
         this.userName = reponse.body.userName

@@ -39,7 +39,7 @@ export default {
             }
             
             const reponse = await req.putUser(update)
-            if(!reponse.ok) alert('ne erreur cest produite')
+            if(!reponse.ok) alert('une erreur cest produite')
             alert("le status de l'utilisateur a bien etait modifier")
             this.$router.push({name: 'listAdmin'})
             window.location.reload()

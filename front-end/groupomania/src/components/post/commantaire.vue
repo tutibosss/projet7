@@ -66,7 +66,7 @@ export default {
             const postId = this.$route.params.postId
             
             const reponse = await Req.pushComment(postId, comment)
-            if(reponse.ok != true) alert('tricheur') //fonction pour renvoyer au loin
+            if(reponse.ok != true) alert('une erreur cest produite')
             window.location.reload()
         },
         async deleteCommentaire (index) {
@@ -81,7 +81,7 @@ export default {
                 alert(reponse.body)
             }else{
                 const reponse = await Req.deleteCommentaire(this.$route.params.postId, update)
-                if(reponse.ok != true) return alert('tricheur') //fonction pour renvoyer au loin
+                if(reponse.ok != true) return alert('') //fonction pour renvoyer au loin
                 alert(reponse.body)
             }
             window.location.reload()
@@ -106,11 +106,11 @@ export default {
             const user = JSON.parse(localStorage.getItem('user'))
             if(user.admin){
                 const reponse = await Req.adminModifCommentaire( postId, update)
-                if(reponse.ok != true) return alert('tricheur') //fonction pour renvoyer au loin
+                if(reponse.ok != true) return alert('une erreur cest produite')
                 alert(reponse.body)  
             }else{
                 const reponse = await Req.modifCommentaire( postId, update)
-                if(reponse.ok != true) return alert('tricheur') //fonction pour renvoyer au loin
+                if(reponse.ok != true) return alert('une erreur cest produite')
                 alert(reponse.body)               
             }
             window.location.reload()

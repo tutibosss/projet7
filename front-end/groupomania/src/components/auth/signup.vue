@@ -48,7 +48,7 @@ export default {
 
       const login = await req.login(user)
 
-      if(!login.ok) return this.error = rep.body + " une erreur c'est produit lors de la conection"
+      if(!login.ok) return this.error = rep.body + " une erreur c'est produit lors de la connection"
 
       localStorage.setItem('user', JSON.stringify(login.body))
       this.$router.push({name:'index', params:{id: login.body.userName}})

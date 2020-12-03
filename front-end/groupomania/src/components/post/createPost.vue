@@ -32,7 +32,7 @@ export default {
             }
 
             const reponse = await req.newPost(post)
-            if(reponse.ok != true) return alert('tricheur') //fonction pour renvoyer au loin
+            if(reponse.ok != true) return alert('une erreur cest produite')
             alert(reponse.body)
             this.$router.push({name:'index', params:{id: user.userName}})
         }

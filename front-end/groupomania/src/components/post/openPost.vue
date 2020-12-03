@@ -42,7 +42,7 @@ export default {
          const postId = this.$route.params.postId 
 
          const reponse = await Req.getPostId(postId)
-         if(reponse.ok != true) alert('tricheur') //fonction pour renvoyer au loin
+         if(reponse.ok != true) alert('une erreur cest produite')
          this.post = reponse.body
          this.route = require('../../image/'+reponse.body.fileName)
      
@@ -58,12 +58,12 @@ export default {
             if(this.admin){
             const reponse = await Req.adminDeletePost(postId)
             
-            if(reponse.ok != true) return alert('tricheur') //fonction pour renvoyer au loin
+            if(reponse.ok != true) return alert('une erreur cest produite')
             
             }else if (this.userDroit && !this.admin){
                 
                 const reponse = await Req.deletePost(postId)
-                if(reponse.ok != true) return alert('tricheur') //fonction pour renvoyer au loin
+                if(reponse.ok != true) return alert('une erreur cest produite')
 
             }else {return alert ('commande impossible')}
 

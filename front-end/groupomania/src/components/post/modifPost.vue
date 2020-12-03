@@ -49,10 +49,10 @@ export default {
            const user = JSON.parse(localStorage.getItem('user'))
            if(user.admin){
                const reponse = await req.adminModifPost(idPost, update)
-                if(reponse.ok != true) return alert('tricheur') //fonction pour renvoyer au loin
+                if(reponse.ok != true) return alert('une erreur cest produite')
            }else{
                 const reponse = await req.modifPost(idPost, update)
-                if(reponse.ok != true) return alert('tricheur') //fonction pour renvoyer au loin
+                if(reponse.ok != true) return alert('une erreur cest produite')
            }
 
             window.location.reload()

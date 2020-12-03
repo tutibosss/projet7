@@ -11,7 +11,7 @@ const req = require('../axios/requette')
 export default {
     async beforeCreate () {
         const reponse = await req.getAllPost()
-        if(reponse.ok != true) alert('tricheur') //fonction pour renvoyer au loin
+        if(reponse.ok != true) alert("une erreur c'est produite")
         this.listItem = reponse.body
     },
     data: () =>{return{

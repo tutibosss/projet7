@@ -42,9 +42,9 @@ export default {
         async deleteUser () {
             const user = JSON.parse(localStorage.getItem('user'))
             const reponse = await req.deleteUser(user.userId)
-            if(reponse.ok != true) return alert('tricheur') //fonction pour renvoyer au loin
+            if(reponse.ok != true) return alert('une erreur cest produite')
             const rep = await req.deleteUserPostAll(user.userId)
-            if(rep.ok != true) return alert('tricheur') //fonction pour renvoyer au loin
+            if(rep.ok != true) return alert('une erreur cest produite')
             this.$router.push({name: 'login'})
         }
     },

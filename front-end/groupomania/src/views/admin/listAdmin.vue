@@ -17,7 +17,7 @@ export default {
     }},
     async beforeCreate () {
         const reponse = await req.adminGetUser(true)
-        if(!reponse.ok) alert('ne erreur cest produite')
+        if(!reponse.ok) alert('une erreur cest produite')
         this.list = reponse.body
     }
 }
