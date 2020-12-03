@@ -1,6 +1,6 @@
 <template>
     <div class="listAdmin">
-        <p v-if="list.length === 0"> aucun utilisateur n'a etait trouver</p>
+        <p v-if="list.length === 0">Aucun utilisateur n'a été trouvé</p>
         <div v-else class="listAdmin_box">
             <div v-for="item in list" :key="item.id" class="listAdmin_item">
                 <img :src="require('../../image/' + item.fileName)" alt="" class="photoProfil">
@@ -26,8 +26,8 @@ export default {
     beforeMount () {
         this.userId = JSON.parse(localStorage.getItem('user')).userId
         
-        if(!this.type) return this.textButton = "passe l'utilisateur admin"
-        this.textButton = "enlever les droit d'admin"
+        if(!this.type) return this.textButton = "Passer l'utilisateur admin"
+        this.textButton = "Enlever les droits d'admin"
     },
     methods: {
         async modifAdmin (status, id) {
@@ -39,8 +39,8 @@ export default {
             }
             
             const reponse = await req.putUser(update)
-            if(!reponse.ok) alert('une erreur cest produite')
-            alert("le status de l'utilisateur a bien etait modifier")
+            if(!reponse.ok) alert("Une erreur s'est produite")
+            alert("Le statut de l'utilisateur a bien été modifié")
             this.$router.push({name: 'listAdmin'})
             window.location.reload()
         }

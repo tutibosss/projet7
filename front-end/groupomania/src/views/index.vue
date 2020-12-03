@@ -15,9 +15,9 @@ export default {
     async beforeCreate(){
             const user = JSON.parse(localStorage.getItem('user'))
             const rep = await req.getUser(user.userId)
-            if(!rep.ok) return alert('une erreur cest produite')
+            if(!rep.ok) return alert("Une erreur s'est produite")
             const admin = JSON.parse(rep.body.admin)
-            this.$store.commit('adminStatue', admin)
+            this.$store.commit('adminStatut', admin)
     }
 }
 </script>

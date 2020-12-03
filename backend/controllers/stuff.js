@@ -3,7 +3,7 @@ const db = require('../utils/db/connectDataBase')
 exports.newPost = (req, res) => {
     const SQL = 'SELECT fileName FROM user WHERE id = ?'
     db.query(SQL, req.body.userId, (error, result) => {
-        if(error) return res.status(400).json('une erreur c est produit')
+        if(error) return res.status(400).json("Une erreur s'est produite")
         let comment = []
         comment = JSON.stringify(comment)
         const sql = 'INSERT INTO post SET ?'
@@ -16,8 +16,8 @@ exports.newPost = (req, res) => {
             commentaire: comment
         }
         db.query(sql, value, (error,result) => {
-            if(error) return res.status(400).json('une erre c est produite');
-            return res.status(200).json('post créé')
+            if(error) return res.status(400).json("Une erreur s'est produite");
+            return res.status(200).json('Post créé')
         })
     })
 }
@@ -25,14 +25,14 @@ exports.newPost = (req, res) => {
 exports.newCommentaire = (req, res) =>{
     const Sql = 'SELECT fileName FROM user WHERE id = ?'
     db.query(Sql, req.body.userId, (error, result) => {
-        if(error) return res.status(400).json("une erreur c'est produite")
+        if(error) return res.status(400).json("Une erreur s'est produite")
         const filename = result[0].fileName
         const idPost = req.params.id
         const sql = 'SELECT commentaire FROM post WHERE id = ?'
     
         db.query(sql, idPost, (error, result) =>{
     
-            if(error) return res.status(400).json('une erre c est produite');
+            if(error) return res.status(400).json("Une erreur s'est produite");
             
             const array = JSON.parse(result[0].commentaire)
             array.push({...req.body, fileName : filename})
@@ -41,8 +41,8 @@ exports.newCommentaire = (req, res) =>{
     
             const SQL = 'UPDATE post SET commentaire = ? WHERE id = ?'
             db.query(SQL, [update, idPost], (error, result) => {
-                if(error) return res.status(400).json('une erre c est produite');
-                return res.status(200).json({message: 'ajout du commentaire'})
+                if(error) return res.status(400).json("Une erreur s'est produite");
+                return res.status(200).json({message: 'Ajout du commentaire'})
             })
         })
     })
@@ -53,7 +53,7 @@ exports.modifCommentaire = (req, res) => {
 
     const sql = 'SELECT commentaire FROM post WHERE id= ?'
     db.query(sql, postId, (error, result) => {
-        if(error) return res.status(400).json('une erreur c est produite');
+        if(error) return res.status(400).json("Une erreur s'est produite");
 
         let commentaire = JSON.parse(result[0].commentaire)
         commentaire[req.body.index].commentaire =  req.body.newCommentaire
@@ -61,8 +61,8 @@ exports.modifCommentaire = (req, res) => {
         const update = JSON.stringify(commentaire)
         const SQL = "UPDATE post SET commentaire = ? WHERE id = ?"
         db.query(SQL, [update ,postId], (error ,result) => {
-            if(error) return res.status(400).json('une erreur c est produite');
-            res.status(200).json('modification effectuer')
+            if(error) return res.status(400).json("Une erreur s'est produite");
+            res.status(200).json('La modification à été effectué')
         })
     })
 }
@@ -71,16 +71,15 @@ exports.modifCommentaire = (req, res) => {
 exports.modifPost = (req, res) => {
     const sql = "UPDATE post SET ? WHERE id = ?"
     db.query(sql, [req.body, req.params.id], (error, result) => {
-        if(error) return res.status(400).json('une erreur c est produit')
-        res.status(200).json('votre mise a jour a bien etait effectuer')
+        if(error) return res.status(400).json("Une erreur s'est produite")
+        res.status(200).json("Votre mise à jour a bien été effectué")
     })
 }
 
 exports.GetAllPost = (req, res) => {
     const sql = 'SELECT * FROM post ORDER BY id DESC'
     db.query(sql, (error,result) =>{
-        if(error) return res.status(400).json('une erreur c est produit');
-        // const post = result.reverse()
+        if(error) return res.status(400).json("Une erreur s'est produite");
         return res.status(200).json(result)
     })
 }
@@ -89,7 +88,7 @@ exports.GetPost = (req, res) => {
     const idPost = req.params.id
     const sql = 'SELECT * FROM post WHERE id = ?'
     db.query(sql, idPost, (error, result) => {
-        if(error) return res.status(400).json('une erreur c est produit');
+        if(error) return res.status(400).json("Une erreur s'est produite");
         result[0].commentaire = JSON.parse(result[0].commentaire)
         return res.status(200).json(result[0])
     })
@@ -99,8 +98,8 @@ exports.deletePost = (req, res) =>{
     const postId = req.params.id
     const sql = 'DELETE FROM post WHERE id = ?'
     db.query(sql, postId, (error, result) => {
-        if(error) return res.status(400).json('un probleme et survenue veuille retanter plus tard');
-        return res.status(200).json('post suprimer')
+        if(error) return res.status(400).json("Une erreur s'est produite");
+        return res.status(200).json('Post supprimé')
     })
 }
 
@@ -108,8 +107,8 @@ exports.deleteAllPost = async (req, res) => {
         const user = req.params.id
         const sql = 'DELETE FROM post WHERE userId = ?'
         db.query(sql, user, (error, result) => {
-            if(error) return res.status(400).json('une erreur c est produite');
-            res.status(200).json({message: 'les post on bien etait suprime'})
+            if(error) return res.status(400).json("Une erreur s'est produite");
+            res.status(200).json('Les posts ont bien été supprimé')
         })
 }
 
@@ -117,7 +116,7 @@ exports.deleteCommentaire = async (req, res) => {
     const postId = req.params.id
     const sql = 'SELECT commentaire FROM post WHERE id= ?'
     db.query(sql, postId, (error, result) => {
-        if(error) return res.status(400).json('une erreur c est produite');
+        if(error) return res.status(400).json("Une erreur s'est produite");
         let commentaire = JSON.parse(result[0].commentaire)
 
         commentaire.splice(req.body.index , 1)
@@ -126,8 +125,8 @@ exports.deleteCommentaire = async (req, res) => {
         const SQL = 'UPDATE post SET commentaire = ? WHERE id = ?'
 
         db.query(SQL, [update, postId], (error, result) => {
-            if(error) return res.status(400).json('une erreur c est produite');
-            res.status(200).json('le commentaire et bien suprimer')
+            if(error) return res.status(400).json("Une erreur s'est produite");
+            res.status(200).json("Le commentaire est bien supprimé")
         })
     })
 }

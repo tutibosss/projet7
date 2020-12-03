@@ -8,7 +8,7 @@ export default new Vuex.Store({
     admin: null
   },
   mutations: {
-    adminStatue(state, payload) {
+    adminStatut(state, payload) {
       state.admin = payload
     }
   },

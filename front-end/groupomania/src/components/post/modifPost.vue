@@ -3,17 +3,17 @@
         <div class="Post_titre">
             <img :src="require('../../image/'+post.fileName)" alt="" class="photoProfil">
             <div>
-                <p>publier par <br>
+                <p>Publié par :<br>
                 {{post.userName}}</p>
                 <p>le  {{new Date(post.date).toLocaleDateString('eu-FR', { year: 'numeric', month: 'long', day: 'numeric' })}} 
-                    a  {{new Date(post.date).toLocaleTimeString('eu-FR')}}</p>
+                    à  {{new Date(post.date).toLocaleTimeString('eu-FR')}}</p>
             </div>
         </div>
         <form class="modifPost_form">
-            <label for="titre">titre du post</label>
+            <label for="titre">Titre du post</label>
             <input type="text " id="titre" v-model="titrePost">
 
-            <label for="contenue"> contenue du post</label>
+            <label for="contenue"> Contenu du post </label>
             <input type="text" id="contenue" v-model="contenuPost" class="createPost_form_inputPost">
             <div class="modifPost_button">
                 <input  type="button" @click.prevent="annule" value="annule">   
@@ -49,10 +49,10 @@ export default {
            const user = JSON.parse(localStorage.getItem('user'))
            if(user.admin){
                const reponse = await req.adminModifPost(idPost, update)
-                if(reponse.ok != true) return alert('une erreur cest produite')
+                if(reponse.ok != true) return alert("Une erreur s'est produite")
            }else{
                 const reponse = await req.modifPost(idPost, update)
-                if(reponse.ok != true) return alert('une erreur cest produite')
+                if(reponse.ok != true) return alert("Une erreur s'est produite")
            }
 
             window.location.reload()

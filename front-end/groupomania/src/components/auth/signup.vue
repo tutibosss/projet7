@@ -2,14 +2,14 @@
     <div>
       <p class="error">{{error}}</p>  
       <form>
-          <label for="userName"> user name </label>
+          <label for="userName"> Pseudo </label>
           <input type="text" id="userName" required v-model="userName">
 
-          <label for="email"> email </label>
+          <label for="email"> Email </label>
           <input type="email" id="email" required v-model="email">
 
           <label for="password"> Mot de passe </label>
-          <input type="password" id="passeword" required v-model="password">
+          <input type="password" id="password" required v-model="password">
 
           <input type="submit" @click.prevent="signup" class="buttonAuth">
       </form>   
@@ -30,8 +30,6 @@ export default {
   methods: {
     async signup () {
 
-      //creation du compte
-
       const user = {
         userName: this.userName,
         email: this.email,
@@ -44,11 +42,9 @@ export default {
       const rep = await req.signup(user)
       if(!rep.ok) return this.error = rep.body
 
-      //conection au compte cree
-
       const login = await req.login(user)
 
-      if(!login.ok) return this.error = rep.body + " une erreur c'est produit lors de la connection"
+      if(!login.ok) return "Une erreur s'est produite"
 
       localStorage.setItem('user', JSON.stringify(login.body))
       this.$router.push({name:'index', params:{id: login.body.userName}})

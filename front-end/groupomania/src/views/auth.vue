@@ -1,7 +1,7 @@
 <template>
     <div class="auth" >
         <div class="formAuth">
-            <h2>Bienvenue sur notre resaux social</h2>
+            <h2>Bienvenue sur notre réseau social</h2>
             <navOffline/>
             <router-view/>
         </div>

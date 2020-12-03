@@ -4,7 +4,7 @@
             <h2>Mon profil</h2>
             <profil/>
         </router-link>
-        <button v-if="listItem.length > 0" @click="deleteMyPost" class="deletePost">suprimer tout mais post</button>
+        <button v-if="listItem.length > 0" @click="deleteMyPost" class="deletePost">Supprimer tous mes posts</button>
         <listPost v-bind:listPost='listItem' v-bind:userDroit='userDroit'/>
     </div>
 </template>
@@ -18,7 +18,7 @@ export default {
     async beforeCreate () {
         const user = JSON.parse(localStorage.getItem('user'))
         const reponse = await req.getAllPostId(user.userId)
-        if(reponse.ok != true) return alert('tricheur') //fonction pour renvoyer au loin
+        if(reponse.ok != true) return alert("Une erreur s'est produite")
         this.listItem = reponse.body
         this.userDroit = true
     },
@@ -34,7 +34,7 @@ export default {
         async deleteMyPost () {
             const user = JSON.parse(localStorage.getItem('user'))
             const rep = await req.deleteUserPostAll(user.userId)
-            if(rep.ok != true) return alert('une erreur cest produite') //fonction pour renvoyer au loin
+            if(rep.ok != true) return alert("Une erreur s'est produite")
             window.location.reload()
         }
     }

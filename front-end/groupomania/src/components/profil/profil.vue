@@ -17,7 +17,7 @@ export default {
 
         const reponse = await req.getUser(user.userId)
 
-        if(reponse.ok != true) return alert('une erreur cest produite')
+        if(reponse.ok != true) return alert("Une erreur s'est produite")
 
         this.email = reponse.body.email
         this.userName = reponse.body.userName

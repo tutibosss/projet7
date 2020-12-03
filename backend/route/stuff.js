@@ -2,8 +2,7 @@ const express = require('express');
 const router = express.Router();
 const stuffCrtl = require('../controllers/stuff');
 
-const auth = require('../middelware/auth')
-// const multer = require('../middelware/multer-config')
+const auth = require('../middleware/auth')
 
 router.post('/post', auth, stuffCrtl.newPost);
 router.post('/post/commentaire/:id', auth, stuffCrtl.newCommentaire);

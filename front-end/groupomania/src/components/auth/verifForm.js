@@ -6,9 +6,9 @@ exports.login = (user) => {
     const password = verifPassword.test(user.password)
 
     if(email===true && password === true) return true
-    if(!email && !password) return "aucun des champs n'est correct"
-    if(!password) return 'votre mot de passe et incorect'
-    if(!email) return 'votre email et incorect'
+    if(!email && !password) return "Aucun des champs n'est correct"
+    if(!password) return 'Votre mot de passe est incorrect'
+    if(!email) return 'Votre email est incorrect'
 }
 
 exports.signup = (user) => {
@@ -21,8 +21,8 @@ exports.signup = (user) => {
     const userName = verifTaille.test(user.userName)
 
     if(email===true && password === true && userName === true) return true
-    if(!email && !password) return "aucun des champs n'est correct"
-    if(!userName) return 'votre nom et trop court'
-    if(!password) return 'votre mot de passe et incorect'
-    if(!email) return 'votre email et incorect'
+    if(!email && !password) return "Aucun des champs n'est correct"
+    if(!userName) return 'Votre nom est trop court'
+    if(!password) return 'Votre mot de passe est incorrect'
+    if(!email) return 'Votre email est incorrect'
 }

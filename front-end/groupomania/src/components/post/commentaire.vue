@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="listCommentaire">
-            <p v-if="commentaire < 1"> il ny a pas de comentaire pour l instant</p>
+            <p v-if="commentaire < 1">Il n'y a pas de commentaires pour l'instant</p>
             <div v-else v-for="(item, index) in commentaire" :key="index" >
                 <article v-if="modifIndex != index" class="commentaireBox">
                     <div class="commentaireText">
@@ -20,7 +20,7 @@
                 <div v-else-if="modifIndex === index" class="commentaireBox commentaireModif">
                     <p>{{item.userName}}</p>
                     <form class="commentaireModif_form">
-                        <label for="modifCommentaire"> modifier le commentaire</label>
+                        <label for="modifCommentaire"> Modifier le commentaire</label>
                         <input type="text" id="modifCommentaire" v-model="modifChamps" >
                         <div>
                             <input type="submit" value="envoyer la modification" @click.prevent="modifCommentaire(index)">
@@ -32,7 +32,7 @@
         </div>
         <div class="ButtonCommentaire">
             <input type="text" v-model="comment">
-            <button @click="push">commenter</button>
+            <button @click="push">Commenter</button>
         </div>
     </div>
 </template>
@@ -66,7 +66,7 @@ export default {
             const postId = this.$route.params.postId
             
             const reponse = await Req.pushComment(postId, comment)
-            if(reponse.ok != true) alert('une erreur cest produite')
+            if(reponse.ok != true) alert("Une erreur s'est produite")
             window.location.reload()
         },
         async deleteCommentaire (index) {
@@ -77,17 +77,17 @@ export default {
             const user = JSON.parse(localStorage.getItem('user'))
             if(user.admin){
                 const reponse = await Req.adminDeleteCommentaire(this.$route.params.postId, update)
-                if(reponse.ok != true) return alert('tricheur') //fonction pour renvoyer au loin
+                if(reponse.ok != true) return alert("Une erreur s'est produite")
                 alert(reponse.body)
             }else{
                 const reponse = await Req.deleteCommentaire(this.$route.params.postId, update)
-                if(reponse.ok != true) return alert('') //fonction pour renvoyer au loin
+                if(reponse.ok != true) return alert("Une erreur s'est produite")
                 alert(reponse.body)
             }
             window.location.reload()
         },
         modif(index, champ) {
-            if(this.modifIndex != null) return alert('vous ete deja en cour de modification veuille annule ou finir la modif en cours')
+            if(this.modifIndex != null) return alert("Vous êtes déjà en cours de modifications, veuillez annuler ou finir la modif en cours")
             this.modifIndex = index
             this.modifChamps = champ.commentaire
         },
@@ -106,11 +106,11 @@ export default {
             const user = JSON.parse(localStorage.getItem('user'))
             if(user.admin){
                 const reponse = await Req.adminModifCommentaire( postId, update)
-                if(reponse.ok != true) return alert('une erreur cest produite')
+                if(reponse.ok != true) return alert("Une erreur s'est produite")
                 alert(reponse.body)  
             }else{
                 const reponse = await Req.modifCommentaire( postId, update)
-                if(reponse.ok != true) return alert('une erreur cest produite')
+                if(reponse.ok != true) return alert("Une erreur s'est produite")
                 alert(reponse.body)               
             }
             window.location.reload()

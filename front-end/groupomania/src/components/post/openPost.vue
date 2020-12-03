@@ -5,8 +5,8 @@
         <modifPost class="Post" v-bind:post="post" @annule="annuler" v-else />
 
         <div v-if="(userDroit === true || admin === true) && !modifier" class="ButtonPost">
-            <button @click="modif">modifier</button>
-            <button @click="deletePost">suprimer le post</button>
+            <button @click="modif">Modifier</button>
+            <button @click="deletePost">Supprimer le post</button>
         </div>
 
         <commentaire v-bind="{commentaire: post.commentaire, admin: admin, userId: userId}" class="commentaire"/>
@@ -18,7 +18,7 @@
 
 const Req = require('../../axios/requette')
 
-import commentaire from './commantaire'
+import commentaire from './commentaire'
 import post from './post'
 import modifPost from './modifPost'
 
@@ -42,7 +42,7 @@ export default {
          const postId = this.$route.params.postId 
 
          const reponse = await Req.getPostId(postId)
-         if(reponse.ok != true) alert('une erreur cest produite')
+         if(reponse.ok != true) alert("Une erreur s'est produite")
          this.post = reponse.body
          this.route = require('../../image/'+reponse.body.fileName)
      
@@ -58,16 +58,16 @@ export default {
             if(this.admin){
             const reponse = await Req.adminDeletePost(postId)
             
-            if(reponse.ok != true) return alert('une erreur cest produite')
+            if(reponse.ok != true) return alert("Une erreur s'est produite")
             
             }else if (this.userDroit && !this.admin){
                 
                 const reponse = await Req.deletePost(postId)
-                if(reponse.ok != true) return alert('une erreur cest produite')
+                if(reponse.ok != true) return alert("Une erreur s'est produite")
 
             }else {return alert ('commande impossible')}
 
-            alert('lobjet et bien suprimer')
+            alert("Le post est bien supprimé")
             this.$router.push({name: 'home'})
         },
         modif () {

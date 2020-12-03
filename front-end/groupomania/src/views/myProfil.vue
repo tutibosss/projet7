@@ -4,9 +4,9 @@
             <profil @user-profil = "setUser" class="profilBox_view"/>
             <div class="profilButton">
                 <button @click="modif">{{message}}</button>
-                <button @click="deleteUser">suprimer le profil</button>
+                <button @click="deleteUser">Supprimer le profil</button>
             </div>
-            <router-link :to="{name : 'myPage'}">retour a mon espace</router-link>  
+            <router-link :to="{name : 'myPage'}">Retour a mon espace</router-link>  
         </div>
         <div v-else class="profilBox">
             <editProfil v-bind:User="user" class="profilBox_view"/>
@@ -28,7 +28,7 @@ export default {
     data: () => {return{
         user: '',
         modifProfil: false,
-        message: 'moifier le profil'
+        message: 'Modifier le profil'
     }},
     methods: {
         setUser(payload) {
@@ -37,14 +37,14 @@ export default {
         modif() {
             this.modifProfil = !this.modifProfil
             if(this.modifProfil) return this.message = 'retour'
-            this.message = 'modifier le profil'
+            this.message = 'Modifier le profil'
         },
         async deleteUser () {
             const user = JSON.parse(localStorage.getItem('user'))
             const reponse = await req.deleteUser(user.userId)
-            if(reponse.ok != true) return alert('une erreur cest produite')
+            if(reponse.ok != true) return alert("Une erreur s'est produite")
             const rep = await req.deleteUserPostAll(user.userId)
-            if(rep.ok != true) return alert('une erreur cest produite')
+            if(rep.ok != true) return alert("Une erreur s'est produite")
             this.$router.push({name: 'login'})
         }
     },

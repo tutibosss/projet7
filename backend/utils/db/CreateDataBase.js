@@ -8,7 +8,7 @@ const DB =  mysql.createConnection({
 
 DB.connect(function(err) {
   if (err) throw err;
-  console.log('connecter')
+  console.log('connecté')
   const sql = 'CREATE DATABASE IF NOT EXISTS groupomania'
   DB.query(sql, (error, result) => {
     if (err) throw err

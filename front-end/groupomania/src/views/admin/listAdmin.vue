@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h2>Liste des admin actif</h2>
+        <h2>Liste des admins actifs</h2>
         <listAdmin v-bind="{list: list, type: true}"/>
     </div>
 </template>
@@ -17,7 +17,7 @@ export default {
     }},
     async beforeCreate () {
         const reponse = await req.adminGetUser(true)
-        if(!reponse.ok) alert('une erreur cest produite')
+        if(!reponse.ok) alert("Une erreur s'est produite")
         this.list = reponse.body
     }
 }

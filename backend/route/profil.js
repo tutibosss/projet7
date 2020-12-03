@@ -1,10 +1,10 @@
 const express = require('express');
-const multer = require('../middelware/multer-config');
+const multer = require('../middleware/multer-config');
 const router = express.Router();
 
 const profilCtrl = require('../controllers/profil')
 
-const auth = require('../middelware/auth')
+const auth = require('../middleware/auth')
 
 router.get('/:id', auth, profilCtrl.getUser)
 router.get('/post/:id', auth, profilCtrl.getPost)

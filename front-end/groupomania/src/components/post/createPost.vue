@@ -2,10 +2,10 @@
     <div class="createPost">
         <h2>cree un post</h2>
         <form class="createPost_form">
-            <label for="titre">titre du post</label>
+            <label for="titre">Titre du post</label>
             <input type="text " id="titre" v-model="titrePost">
 
-            <label for="contenue"> contenue du post</label>
+            <label for="contenue"> Contenu du post</label>
             <input type="text" id="contenue" v-model="post" class="createPost_form_inputPost">
             
             <input type="submit" value="cree le post" @click.prevent="newPost" class="createPost_form_button">
@@ -32,7 +32,7 @@ export default {
             }
 
             const reponse = await req.newPost(post)
-            if(reponse.ok != true) return alert('une erreur cest produite')
+            if(reponse.ok != true) return alert("Une erreur s'est produite")
             alert(reponse.body)
             this.$router.push({name:'index', params:{id: user.userName}})
         }

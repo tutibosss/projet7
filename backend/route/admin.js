@@ -1,11 +1,10 @@
 const express = require('express');
 const router = express.Router();
 
-// const profilCtrl = require('../controllers/profil')
 const stuffCtrl = require('../controllers/stuff')
 const adminCtrl = require('../controllers/admin')
 
-const auth = require('../middelware/authAdmin');
+const auth = require('../middleware/authAdmin');
 
 router.delete('/post/:id', auth, stuffCtrl.deletePost)
 router.get('/user/:value', auth, adminCtrl.getUser)

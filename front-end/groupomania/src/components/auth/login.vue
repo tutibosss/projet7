@@ -2,10 +2,10 @@
   <div>
       <p class="error">{{error}}</p>
       <form>
-          <label for="email">email</label>
+          <label for="email">Email</label>
           <input type="email" v-model="email" id="email">
           
-          <label for="password" id="password">mot de passe</label>
+          <label for="password" id="password">Mot de passe</label>
           <input type="password" id="password" v-model="password">
 
           <input type="submit" value="se connecter" @click.prevent= 'login' class="buttonAuth">
