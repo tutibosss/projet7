@@ -1,4 +1,4 @@
-const db = require('../middelware/db/connectDataBase')
+const db = require('../utils/db/connectDataBase')
 
 exports.newPost = (req, res) => {
     const SQL = 'SELECT fileName FROM user WHERE id = ?'

@@ -1,5 +1,5 @@
-const db = require('../middelware/db/connectDataBase')
-const emailCrypte = require('../middelware/masqueEmail')
+const db = require('../utils/db/connectDataBase')
+const emailCrypte = require('../utils/masqueEmail')
 
 exports.getUser = async (req, res) => {
     const sql = 'SELECT userName, email, id, admin, fileName FROM user WHERE admin = ?'

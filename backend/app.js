@@ -1,5 +1,5 @@
-require('dotenv').config({path: './middelware/.env'})
-require('./middelware/db/CreateDataBase')
+require('dotenv').config({path: './.env'})
+require('./utils/db/CreateDataBase')
 
 const express = require('express');
 const bodyParse = require('body-parser');

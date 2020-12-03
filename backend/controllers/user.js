@@ -1,7 +1,7 @@
-const db = require('../middelware/db/connectDataBase')
+const db = require('../utils/db/connectDataBase')
 const bcrypte = require('bcrypt');
 const token = require('jsonwebtoken');
-const emailCryp = require('../middelware/masqueEmail')
+const emailCryp = require('../utils/masqueEmail')
 
 exports.signup = (req, res) => {
     const email = emailCryp.crypte(req.body.email)

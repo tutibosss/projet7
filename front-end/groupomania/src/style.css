@@ -5,6 +5,11 @@ body {
     width: 100%;
     background-color: rgb(189, 187, 181);
 }
+input{
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
 .routerview{
     display: flex;
     flex-direction: column;
@@ -43,7 +48,6 @@ header{
 .router-link-active{
     opacity: 0.5;
 }
-
 /* partie connection ou inscription  */
 
 .auth{
@@ -588,4 +592,9 @@ nav a{
      .profilButton button{
          margin-top: 10px;
      }
+
+     .header-photo{
+        display: flex;
+        max-width: 80%;
+    }
 }

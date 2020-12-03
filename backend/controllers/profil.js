@@ -1,6 +1,6 @@
-const db = require('../middelware/db/connectDataBase')
+const db = require('../utils/db/connectDataBase')
 const bcrypte = require('bcrypt')
-const emailCrypt = require('../middelware/masqueEmail')
+const emailCrypt = require('../utils/masqueEmail')
 const fs = require('fs');
 
 exports.getUser = (req, res) => {
