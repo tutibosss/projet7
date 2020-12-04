@@ -1,7 +1,6 @@
 const db = require('../utils/db/connectDataBase')
 const bcrypt = require('bcrypt')
 const emailCrypt = require('../utils/masqueEmail')
-// const fs = require('fs');
 
 exports.getUser = (req, res) => {
     const userId = req.params.id
@@ -38,14 +37,6 @@ exports.modifProfil = async (req, res) => {
         fileName: req.file.filename
     } : {...req.body}
 
-    // const deletFile = (repFile) =>{
-    //     if(req.file && repFile != 'pictureUserDefault.png'){
-    //         fs.unlink('../front-end/groupomania/src/image/' + repFile, (err) => {
-    //             if(err) return res.status(400).json("Une erreur s'est produite")
-    //         })
-    //     }
-    // }
-
     const user = update.userId
 
     delete update.userId
@@ -79,7 +70,6 @@ exports.modifProfil = async (req, res) => {
                 
                 db.query(sql,[update, user], (error, result) => {
                     if(error) return res.status(400).json("Une erreur s'est produite")
-                    // deletFile(fileName)
                     res.status(200).json("La modification à été effectué et mot de passe est changé")
                 })
             })
@@ -88,7 +78,6 @@ exports.modifProfil = async (req, res) => {
             db.query(sql,[update, user], (error, result) => {
                 if(error) return res.status(400).json("Une erreur s'est produite")
                 res.status(200).json('La modification à été effectué')
-                // deletFile(fileName)
             })
         }
 
